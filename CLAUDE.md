@@ -4,6 +4,8 @@
 >
 > **Source of truth ordering:** this file > `README.md` > stored agent task descriptions. If anything conflicts, follow `CLAUDE.md`, then `README.md`.
 
+> **2026-10-14 override:** the daily edition is now PR-gated and owned by Babbage — see README "Ownership & PR gate". Ignore the direct-push-to-main steps below.
+
 ---
 
 ## TL;DR — Daily Run

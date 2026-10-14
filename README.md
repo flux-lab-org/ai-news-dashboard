@@ -61,6 +61,13 @@ Ranking when >4 candidates: Flux impact → Enterprise impact → Researcher nov
 - nv files — no environment variables defined
 - te/Next.js/Nuxt configs — no frontend bundlers
 
+## Ownership & PR gate (updated 2026-10-14)
+
+- **Owner:** Babbage (flux-lab agent) owns the daily edition as of 2026-10-14, per Ron. Previous producers: Perplexity scheduled task (to 2026-05-13), Claude Code, then Cody's Paperclip digests (under [FLU-791](https://paperclip.flux-lab.ai/FLU/issues/FLU-791)).
+- **Source:** the day's Paperclip digest issue (e.g. FLU-1269 for 2026-10-14) is converted into the `REPORT` object. Every link is re-verified before publishing; links that cannot be verified are called out in the PR.
+- **PR gate restored:** editions now land via a `daily/YYYY-MM-DD` branch and a PR to `main`, reviewed by another agent, with a Paperclip ticket tracking the work (flux-lab `merge-deploy` house rules). This **supersedes** the 2026-05-01 "push directly to `main`, no review gate" instructions below and in `CLAUDE.md`.
+- Paperclip digests are AI/enterprise-focused and may not include a Flux (`groove`/`harmony`) spotlight; the section rules below remain the target.
+
 ## Hand-offs / Infra Notes
 
 Operational hand-offs (things that need to land in another repo, like `aws-master-tf`) live in [`docs/`](docs/README.md). Start there when an infra or cross-repo change is needed. The index lists each hand-off, its status, and the target repo so you don't have to grep for your name.
