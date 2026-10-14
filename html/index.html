@@ -317,7 +317,7 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"/><path d="M10 12h4"/></svg>
       Archive
     </a>
-    <div id="report-date">2026-05-13</div>
+    <div id="report-date">2026-10-14</div>
   </div>
 </header>
 
@@ -341,91 +341,85 @@
      ════════════════════════════════════════════ -->
 <script>
 const REPORT = {
-  date: '2026-05-13',
-  spotlights: [
+  "date": "2026-10-14",
+  "spotlights": [
     {
-      title: 'Matter + OpenADR liaison: standards groups align to connect smart-home devices to utility demand-response via an energy gateway',
-      tag: 'both',
-      bullets: [
-        'Connectivity Standards Alliance and OpenADR Alliance announced a formal liaison agreement aimed at accelerating grid-connected residential energy management.',
-        'Matter is positioned for in-home device ↔ energy-gateway communication, while OpenADR 3 is positioned for gateway ↔ utility/grid-operator signaling.',
-        'Net: a cleaner, standards-based pathway for “device-level flexibility” programs (incentives for consumers; scalable DR mechanism for utilities).'
+      "title": "Narrow superintelligence: Nate B. Jones questions whether AI strengths transfer between tasks",
+      "tag": "enterprise",
+      "bullets": [
+        "Oct 13 public preview argues that improvement across capabilities does not establish convergence toward equally reliable performance.",
+        "Contrasts successful software reconstruction with unsuccessful customization — Nate’s examples, not independently reproduced results.",
+        "Packaging takeaway (our inference): sell a bounded workflow evaluation — representative inputs, failure cases, human-review rules and a written go/no-go — before implementation. Full post/audio is paywalled; only the preview was reviewed."
       ],
-      sourceLabel: 'Connectivity Standards Alliance',
-      sourceUrl: 'https://csa-iot.org/newsroom/connectivity-standards-alliance-and-openadr-alliance-announce-liaison-agreement-to-collaborate-on-grid-connected-energy-management/'
+      "sourceLabel": "Nate’s Newsletter",
+      "sourceUrl": "https://natesnewsletter.substack.com/p/narrow-superintelligence-ai"
     },
     {
-      title: 'Microsoft Agent 365 GA: a control plane for discovering, inventorying, and governing enterprise agent fleets (incl. shadow agents)',
-      tag: 'enterprise',
-      bullets: [
-        'Microsoft announced general availability of Agent 365 focused on observability, governance, and security for agents operating with delegated or independent credentials.',
-        'Agent registry + Defender/Intune integrations target discovery and inventory of local agents; policy controls can set guardrails on what agents are allowed to do.',
-        'Starting June 2026, Defender adds asset-context mapping (devices, MCP servers, identities, reachable resources) to assess exposure and blast radius.'
+      "title": "Glean release 562: Fabric IQ MCP template plus tighter agent permission controls",
+      "tag": "enterprise",
+      "bullets": [
+        "Fabric IQ MCP template queries Power BI reports and semantic models, subject to permissions.",
+        "Agent duplication now removes restricted tools; topic-memory permissions synchronize with agent access.",
+        "Pilot implication: MCP integration includes permissions work — test authorization after copying agents and changing access."
       ],
-      sourceLabel: 'Microsoft Security Blog',
-      sourceUrl: 'https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/'
+      "sourceLabel": "Glean Release Notes",
+      "sourceUrl": "https://docs.glean.com/release-notes/releases/2026-10-13-october-release"
     },
     {
-      title: 'Zendure PowerHub: plug-in HEMS hub combining PV + storage + controllable loads, with ZENKI AI optimization and “VPP-ready” interfaces',
-      tag: 'both',
-      bonus: true,
-      bullets: [
-        'Zendure announced PowerHub as a central controller tying together PV, batteries, grid/backup, and controllable loads (heat pumps, EV chargers, smart home devices).',
-        'The product emphasizes open interfaces and EU standards (SG-Ready, EEBus, OCPP) plus “VPP-ready” compatibility for grid services and revenue programs.',
-        'Software stack: ZEN+OS with ZENKI AI for minute-by-minute decisions using habits, weather, and electricity prices; pre-orders now with shipments starting July 2026.'
+      "title": "DXC + LangChain: OASIS agent harness in production, scaling toward 125 customer environments",
+      "tag": "enterprise",
+      "bullets": [
+        "DXC says OASIS runs on LangGraph and is licensing LangSmith for evaluation and observability.",
+        "Enterprise adoption evidence with vendor-reported outcomes — not a performance guarantee for flux-lab.",
+        "Ignore list: don’t extrapolate DXC’s vendor metrics to small pilots."
       ],
-      sourceLabel: 'Newswire (Zendure)',
-      sourceUrl: 'https://www.newswire.ca/news-releases/zendure-launches-powerhub-europe-s-first-plug-in-hems-hub-that-turns-any-solar-home-into-a-whole-home-energy-ecosystem-882771835.html'
+      "sourceLabel": "DXC Newsroom",
+      "sourceUrl": "https://dxc.com/newsroom/10132026-dxc-and-langchain-advance-agentic-ai-harnesses",
+      "bonus": true
     },
     {
-      title: 'Runway updates: Seedance 2.0 multi-input video generation/editing and “Runway Characters” real-time avatars via API',
-      tag: 'bonus',
-      bonus: true,
-      bullets: [
-        'Runway’s changelog highlights Seedance 2.0 (text/image/video/audio inputs) for video generation and editing, rolling out on paid tiers outside the US.',
-        'Runway Characters adds real-time avatars you can interact with; Runway notes API availability for integrating characters into products and workflows.',
-        'Creator stack expansion also includes audio tooling (TTS plus SFX / speech-to-speech apps) as a complementary capability set.'
+      "title": "Buyer brief: “AI knowledge governance architect” — source authority, access controls, escalation, phased roadmap",
+      "tag": "bonus",
+      "bullets": [
+        "Buyer wants vendor-neutral knowledge architecture, decision auditability and evaluation criteria.",
+        "Deliverable shape: architecture assessment plus rollout plan. Displayed $15–30/hour is a qualification concern; posting predates this news window.",
+        "Optional next action: a one-page governed-agent assessment offer modeled on these deliverables."
       ],
-      sourceLabel: 'Runway Changelog',
-      sourceUrl: 'https://runwayml.com/changelog'
+      "sourceLabel": "Upwork",
+      "sourceUrl": "https://www.upwork.com/freelance-jobs/apply/Senior-Knowledge-Governance-Architect_~022093281430795480734/",
+      "bonus": true
     }
   ],
-  stories: [
+  "stories": [
     {
-      title: 'Okta for AI Agents: centralized directory for agents + MCP servers, ownership assignment, lifecycle workflows, and a “kill switch”',
-      tag: 'enterprise',
-      sourceLabel: 'Okta',
-      sourceUrl: 'https://www.okta.com/products/govern-ai-agent-identity/'
+      "title": "FLOCK autonomous-operations summit (Oct 14, scheduled): telemetry prep for AI triage and enterprise ops architecture — talks, not shipped features",
+      "tag": "enterprise",
+      "sourceLabel": "FLOCK",
+      "sourceUrl": "https://www.goflock.ai/"
     },
     {
-      title: 'LM Studio changelog: tighter OpenAI-/Anthropic-compatible local APIs (tool-call error surfacing, reasoning options, schema parsing fixes)',
-      tag: 'harmony',
-      sourceLabel: 'LM Studio Changelog',
-      sourceUrl: 'https://lmstudio.ai/changelog'
+      "title": "Gig radar — “RAG document automation prototype”: document permissions, source citations, structured reports, small paid prototype",
+      "tag": "enterprise",
+      "sourceLabel": "Upwork",
+      "sourceUrl": "https://www.upwork.com/freelance-jobs/apply/Engineer-Automation-Developer-LLM-RAG-Document-Automation-Prototyping_~022101097615505111926/"
     },
     {
-      title: 'OpenAI publishes “open models” page for gpt-oss-120b / gpt-oss-20b with Apache 2.0 licensing',
-      tag: 'harmony',
-      sourceLabel: 'OpenAI',
-      sourceUrl: 'https://openai.com/open-models/'
+      "title": "Gig radar — “n8n agent architecture handover”: Docker deploy, retries, credential handling, edge-case tests, setup docs ($5 budget not a credible benchmark)",
+      "tag": "enterprise",
+      "sourceLabel": "Upwork",
+      "sourceUrl": "https://www.upwork.com/freelance-jobs/apply/Automation-Agent-Developer-n8n-Build-Custom-Agents-and-Workflow-Automations_~022107827170265747888/"
     },
     {
-      title: 'AppFolio 2026 benchmark report: “AI-native” users pull ahead; highlights a trust gap for AI features in legacy property-management systems',
-      tag: 'groove',
-      sourceLabel: 'AppFolio Newsroom',
-      sourceUrl: 'https://www.appfolio.com/newsroom/property-manager-benchmark-survey-2026'
+      "title": "Ignore list: one impressive AI result does not prove general workflow reliability",
+      "tag": "enterprise",
+      "sourceLabel": "Nate’s Newsletter",
+      "sourceUrl": "https://natesnewsletter.substack.com/p/narrow-superintelligence-ai"
     },
     {
-      title: 'OpenADR press releases: DLMS UA + OpenADR Alliance liaison targets interoperable, standards-based smart meter data exchange at the grid edge',
-      tag: 'harmony',
-      sourceLabel: 'OpenADR Alliance',
-      sourceUrl: 'https://www.openadr.org/press-releases'
-    },
-    {
-      title: 'Yardi press release: REfresh Virtual highlights Yardi Virtuoso Assistant and other AI-enabled resident/operations experiences',
-      tag: 'groove',
-      sourceLabel: 'Yardi',
-      sourceUrl: 'https://www.yardi.com/news/press-releases/refresh-virtual-returns-with-an-extra-day/'
+      "title": "Nate B. Jones YouTube: no usable video listing returned; additional uploads unverified",
+      "tag": "enterprise",
+      "sourceLabel": "YouTube",
+      "sourceUrl": "https://www.youtube.com/@NateBJones/videos"
     }
   ]
 };
