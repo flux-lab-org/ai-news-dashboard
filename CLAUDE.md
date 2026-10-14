@@ -4,7 +4,7 @@
 >
 > **Source of truth ordering:** this file > `README.md` > stored agent task descriptions. If anything conflicts, follow `CLAUDE.md`, then `README.md`.
 
-> **2026-10-14 override:** the daily edition is now PR-gated and owned by Babbage — see README "Ownership & PR gate". Ignore the direct-push-to-main steps below.
+> **2026-10-14 override:** the daily edition is now PR-gated and owned by Babbage — see README "Ownership & PR gate". Follow the PR workflow below; direct pushes to main are prohibited.
 
 ---
 
@@ -23,9 +23,9 @@ npx --yes html-validate@8 'html/**/*.html'     # MUST exit 0
 git checkout -b "daily/$(date -u +%F)"
 git add html/ scripts/
 git commit -m "daily($(date -u +%F)): today's edition"
-git checkout main && git merge --ff-only "daily/$(date -u +%F)"
-git push origin main
-git push origin --delete "daily/$(date -u +%F)" || true
+git push -u origin HEAD
+gh pr create --base main --title "Daily edition YYYY-MM-DD" --body-file review-notes.md
+# Wait for non-author review and passing validation, then rebase-merge the PR.
 ```
 
 A push to `main` touching `html/**` triggers `.github/workflows/deploy.yml`, which `aws s3 sync`s `html/` and invalidates CloudFront `/*`. Live in ~1–2 minutes at:
@@ -217,13 +217,7 @@ A B+ edition deployed beats an A+ edition stuck waiting for "more news."
     - [tag,bonus] Headline (sourceUrl)
     Stories: <count>
     ```
-11. Push directly to `main` (no draft PR, no review gate):
-    ```bash
-    git checkout main
-    git merge --ff-only daily/YYYY-MM-DD
-    git push origin main
-    git push origin --delete daily/YYYY-MM-DD || true
-    ```
+11. Push the daily branch and open a PR to `main` with source notes and the tracking issue. Obtain non-author approval and passing validation before an authorized reviewer rebase-merges. Never fast-forward or push the edition directly to `main`.
 12. Verify deploy: poll the CloudFront URL or check `gh run list --workflow=deploy.yml --limit 1` until success.
 
 ---
@@ -251,7 +245,7 @@ Never run `gh auth status` — it is known to fail in some environments and the 
 - **`fetch_url` on the GitHub-hosted README can fail with `bad_robots_code`.** Read the local `README.md` instead.
 - **The validator config exists because** the original `nickersoft/html-validate-action` is gone. We use `npx html-validate@8` + minimal `.htmlvalidate.json`. (See PR #7.)
 - **Manifest builder picks lead title** from `headline` (spotlight) then `title` (story). PR #6 fixed an earlier crash on story-led days.
-- **PRs are no longer the review gate.** The daily edition pushes straight to `main`. PRs were retired on 2026-05-01 per user direction.
+- **PR review is required (2026-10-14).** Daily editions need a non-author review and passing validation before merge. This supersedes the historical 2026-05-01 direct-push workflow.
 
 ---
 
@@ -263,7 +257,7 @@ Never run `gh auth status` — it is known to fail in some environments and the 
 | Atomic-swap guard: `expected 1 REPORT block, found 0` | Pattern didn't match. Either the file was corrupted by a prior edit or someone changed the REPORT declaration syntax. Inspect `html/index.html` around line 338. |
 | Atomic-swap guard: `found 2` | A stray `const REPORT = {` exists somewhere else (e.g. in a comment or backup). Find and remove the duplicate. |
 | Atomic-swap guard: `TAG_META over-match` | The regex captured too much. Likely the REPORT block contains a nested `};` followed by a newline. Tighten the pattern or refactor REPORT to keep the closing `};` on its own line. |
-| `git push origin main` rejected (non-fast-forward) | Someone else pushed. `git fetch origin && git rebase origin/main`, re-validate, re-push. |
+| Daily branch push rejected (non-fast-forward) | Someone else pushed. `git fetch origin && git rebase origin/main`, re-validate, re-push. |
 | Deploy workflow failed | Check `gh run view <run-id> --log-failed`. Usually AWS creds OIDC trust, S3 bucket name, or CloudFront distribution ID env var in the workflow. |
 | Source famine after 7-day widening | Stop the run. Write a note to `handoff_log/YYYY-MM-DD-blocked.md` describing what was searched and why nothing met the bar. Do NOT push a half-built edition. |
 
