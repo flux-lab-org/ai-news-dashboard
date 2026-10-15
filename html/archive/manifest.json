@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15 01:57 UTC",
+  "generated_at": "2026-10-15 03:50 UTC",
   "count": 19,
   "entries": [
     {
@@ -9,16 +9,16 @@
       "summary": "16-unit Bankers Hill building moved from a $60 flat utility fee to ratio billing (RUBS) via a third-party biller; one tenant\u2019s bill hit $289.",
       "tags": [
         "groove",
+        "both",
         "enterprise",
         "bonus",
-        "both",
         "harmony"
       ],
       "sources": [
         "Voice of San Diego",
+        "Sunrun (press release)",
         "Glean Release Notes",
         "PRWeb (Somio AI)",
-        "Sunrun (press release)",
         "Energy Tech",
         "WWLP-22News",
         "DT Next",
@@ -30,7 +30,7 @@
         "DXC Newsroom",
         "Upwork"
       ],
-      "spotlight_count": 3,
+      "spotlight_count": 4,
       "story_count": 8,
       "energy_count": 5,
       "keywords": [
@@ -40,6 +40,12 @@
         "16-unit Bankers Hill building moved from a $60 flat utility fee to ratio billing (RUBS) via a third-party biller; one tenant\u2019s bill hit $289.",
         "Tenants used San Diego\u2019s Residential Utility Fee Ordinance to demand the building\u2019s actual bills, withheld payment, and negotiated a $100 cap (70/30 split).",
         "Why it matters for GrooveGrid: small landlords passing utility costs through formulas face pushback and disclosure rules. Transparent, bill-backed cost allocation is the gap. This is our read; the article doesn\u2019t say it.",
+        "Oct 14 \u2014 Sunrun and Tesla home batteries set 745 MW residential dispatch record in California",
+        "Sunrun (press release)",
+        "both",
+        "669 MW on Oct 5 and 745 MW on Oct 6, called under California\u2019s DSGS and ELRP demand-response programs during a heat wave.",
+        "Dispatches triggered when CAISO day-ahead prices exceeded $200/MWh; Sunrun has 120,000+ batteries enrolled.",
+        "Sunrun says the Google-funded PG&E distributed power plant (~21,000 devices) begins initial dispatch this month.",
         "Oct 13 \u2014 Glean release 562: Fabric IQ MCP template plus tighter agent permission controls",
         "Glean Release Notes",
         "enterprise",
@@ -67,13 +73,7 @@
         "Oct 12 \u2014 Smart meters: Tamil Nadu\u2019s TNPDCL specs a consumer app for its 1.74-crore smart-meter rollout \u2014 near-real-time usage, time-of-use views, 12-month history, CSV export",
         "DT Next",
         "harmony",
-        "Oct 12 \u2014 Ollama v0.40.4: \u201cdecision models\u201d from the CLI (yes/no, classify, rubric scoring), multimodal embeddings via llama-server, MLX runner fixes",
-        "GitHub (ollama/ollama)",
-        "harmony",
-        "Oct 13 \u2014 DoorLoop 2.0: ground-up rebuild for small-to-mid property managers, with 5 operational dashboards and AI agents working inside accounting, leases and payments",
-        "PRWeb (DoorLoop)",
-        "groove",
-        "Oct 13 \u2014 RealPage plugs screening, payments and pricing into Funnel\u2019s AI front office; also notes an agreement with Conservice, a utility-billing competitor"
+        "Oct 12 \u2014 Ollama v0.40.4: \u201cdecision models\u201d from the CLI (yes/no, classify, rubric scoring), multimodal embeddings via llama-server, MLX runner fixes"
       ]
     },
     {
