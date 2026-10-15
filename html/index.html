@@ -317,7 +317,7 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"/><path d="M10 12h4"/></svg>
       Archive
     </a>
-    <div id="report-date">2026-10-14</div>
+    <div id="report-date">2026-10-15</div>
   </div>
 </header>
 
@@ -353,227 +353,185 @@
      ════════════════════════════════════════════ -->
 <script>
 const REPORT = {
-  "date": "2026-10-14",
+  "date": "2026-10-15",
   "spotlights": [
     {
-      "title": "Oct 7 — San Diego tenants strike over RUBS utility bills and win a $100 cap",
-      "tag": "groove",
-      "bullets": [
-        "16-unit Bankers Hill building moved from a $60 flat utility fee to ratio billing (RUBS) via a third-party biller; one tenant’s bill hit $289.",
-        "Tenants used San Diego’s Residential Utility Fee Ordinance to demand the building’s actual bills, withheld payment, and negotiated a $100 cap (70/30 split).",
-        "Why it matters for GrooveGrid: small landlords passing utility costs through formulas face pushback and disclosure rules. Transparent, bill-backed cost allocation is the gap. This is our read; the article doesn’t say it."
-      ],
-      "sourceLabel": "Voice of San Diego",
-      "sourceUrl": "https://voiceofsandiego.org/2026/10/07/how-san-diego-tenants-went-on-strike-over-their-utility-bills-and-won/"
-    },
-    {
-      "title": "Oct 14 — Sunrun and Tesla home batteries set 745 MW residential dispatch record in California",
+      "title": "Oct 14 — Brattle: scaling residential VPPs to 35 GW could cut household bill increases by more than half",
       "tag": "both",
       "bullets": [
-        "669 MW on Oct 5 and 745 MW on Oct 6, called under California’s DSGS and ELRP demand-response programs during a heat wave.",
-        "Dispatches triggered when CAISO day-ahead prices exceeded $200/MWh; Sunrun has 120,000+ batteries enrolled.",
-        "Sunrun says the Google-funded PG&E distributed power plant (~21,000 devices) begins initial dispatch this month."
+        "If every U.S. utility hit a 4% system peak reduction with residential VPPs (already done by the top 10% of DR programs), capacity would grow from ~10 GW to 35 GW.",
+        "Brattle estimates $4–7B a year in household benefits, including ~$1.9B paid directly to participating customers; it recommends OEM-led enrollment of thermostats, EVs and batteries.",
+        "Report (Oct 13) was prepared for Everyday Electric, a DER aggregator, so read it as sponsored analysis. Utility Dive coverage, Oct 14."
       ],
-      "sourceLabel": "Sunrun (press release)",
-      "sourceUrl": "https://investors.sunrun.com/news-events/press-releases/detail/384/sunrun-leads-record-grid-dispatch-delivering-enough-energy"
+      "sourceLabel": "Utility Dive",
+      "sourceUrl": "https://www.utilitydive.com/news/scaling-vpps-could-cut-electric-bill-increases-by-half-brattle/832956/"
     },
     {
-      "title": "Oct 13 — Glean release 562: Fabric IQ MCP template plus tighter agent permission controls",
+      "title": "Oct 15 — Connecticut Public Act 26-113 (SB 335) is in force: no utility charges without a per-unit meter",
+      "tag": "groove",
+      "bullets": [
+        "For rental agreements entered into or renewed on or after Oct 1, 2026, a lease can’t make a tenant pay for utilities unless a separate meter measures that unit only; such clauses are unenforceable.",
+        "Signed June 4, 2026. RUBS and master-meter allocation in new or renewed CT leases are out.",
+        "GrooveGrid angle (our read): CT landlords on shared meters need a submetering or rent-inclusive plan before each renewal."
+      ],
+      "sourceLabel": "Connecticut General Assembly (Public Act 26-113)",
+      "sourceUrl": "https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00113-R00SB-00335-PA.pdf"
+    },
+    {
+      "title": "Oct 14 — Claude Platform exports OpenTelemetry traces from the Messages API, Managed Agents and SDKs (public beta)",
       "tag": "enterprise",
       "bullets": [
-        "Fabric IQ MCP template queries Power BI reports and semantic models, subject to permissions.",
-        "Agent duplication now removes restricted tools; topic-memory permissions sync with agent access.",
-        "Pilot implication: test authorization after copying agents and changing access."
+        "Each agent turn, model call and tool use becomes a standard OTel trace with latency, token counts and IDs, sent to Datadog, Grafana, Langfuse, LangSmith or any OTLP endpoint.",
+        "Server-side export needs no code changes; SDK tracing covers tools run in your own code. Span names may change during beta, so pin SDK versions.",
+        "Secondary write-up (TechCity Authority, Oct 15) citing Anthropic’s Oct 14 announcement."
       ],
-      "sourceLabel": "Glean Release Notes",
-      "sourceUrl": "https://docs.glean.com/release-notes/releases/2026-10-13-october-release",
+      "sourceLabel": "TechCity Authority (secondary)",
+      "sourceUrl": "https://www.techcityauthority.com/2026/10/claude-platform-opentelemetry-traces-beta.html",
       "bonus": true
     },
     {
-      "title": "Oct 14 — Somio AI unifies song generation, voice personalization and music-video creation",
+      "title": "Oct 14 — Medeo expands into a “Creative OS” with an AI music-video generator",
       "tag": "bonus",
       "bullets": [
-        "Generates songs from text, lyrics or a reference track; “My Voice” lets you sing with your own uploaded voice.",
-        "Built-in stem splitter, vocal remover, audio-to-MIDI, BPM/key finder and lyric/karaoke video generator.",
-        "Creator angle: one tool for worship-set lyric videos and stems, but test output quality before relying on it."
+        "Upload a music file plus creative direction and Medeo generates a synchronized music video; also trend discovery, publishing and a creator marketplace in one workflow.",
+        "Reusable characters, styles and “Recipes” for repeatable formats; faceless explainer videos from a script.",
+        "Creator angle: worth a trial for lyric/worship clips, but check rights and output quality first. Vendor press release."
       ],
-      "sourceLabel": "PRWeb (Somio AI)",
-      "sourceUrl": "https://www.prweb.com/releases/somio-ai-unveils-all-in-one-ai-music-and-video-suite-to-streamline-creative-workflows-302908615.html",
+      "sourceLabel": "PR Newswire (Medeo)",
+      "sourceUrl": "https://www.prnewswire.com/news-releases/medeo-introduces-creative-os-taking-ai-video-from-trend-discovery-to-monetization-in-one-continuous-workflow-302909184.html",
       "bonus": true
     }
   ],
   "energy": [
     {
-      "title": "Oct 7 — San Diego tenants strike over RUBS utility bills and win a $100 cap",
-      "tag": "groove",
-      "sourceLabel": "Voice of San Diego",
-      "sourceUrl": "https://voiceofsandiego.org/2026/10/07/how-san-diego-tenants-went-on-strike-over-their-utility-bills-and-won/"
-    },
-    {
-      "title": "Oct 14 — Sunrun and Tesla home batteries set 745 MW residential dispatch record in California",
+      "title": "Oct 14 — Brattle: residential VPPs at a 4% peak reduction could triple U.S. capacity to 35 GW and halve bill increases",
       "tag": "both",
-      "sourceLabel": "Sunrun (press release)",
-      "sourceUrl": "https://investors.sunrun.com/news-events/press-releases/detail/384/sunrun-leads-record-grid-dispatch-delivering-enough-energy"
+      "sourceLabel": "Utility Dive",
+      "sourceUrl": "https://www.utilitydive.com/news/scaling-vpps-could-cut-electric-bill-increases-by-half-brattle/832956/"
     },
     {
-      "title": "Oct 14 — Base Power signs first non-Texas utility deal: 50 MW of whole-home backup batteries with Central Georgia EMC, dispatchable by the co-op ($95 one-time fee)",
-      "tag": "harmony",
-      "sourceLabel": "Energy Tech",
-      "sourceUrl": "https://www.energytech.com/distributed-energy/news/55411775/base-power-brings-50-mw-residential-battery-program-to-georgia-via-electric-co-op-partnership"
-    },
-    {
-      "title": "~Oct 7 (page shows “1 week ago”) — Massachusetts: lower winter electric rates for heat-pump homes start Nov 1 through April; National Grid points to no-cost Mass Save energy assessments",
+      "title": "Oct 13 — Energize CT C&I Committee deck on the landlord/renter split incentive: “energy-aligned” lease clause caps owner pass-through at 80% of predicted retrofit savings",
       "tag": "groove",
-      "sourceLabel": "WWLP-22News",
-      "sourceUrl": "https://www.wwlp.com/news/massachusetts/new-lower-electric-rates-for-heat-pumps-begin-nov-1/amp/"
+      "sourceLabel": "Energize CT (PDF)",
+      "sourceUrl": "https://www.energizect.com/sites/default/files/documents/%239%20-%20Addressing%20the%20Landlord%20-%20Renter%20Split_2026-10-13_CI_MM.pdf"
     },
     {
-      "title": "Oct 12 — Smart meters: Tamil Nadu’s TNPDCL specs a consumer app for its 1.74-crore smart-meter rollout — near-real-time usage, time-of-use views, 12-month history, CSV export",
+      "title": "Upcoming Oct 31 — Massachusetts DOER publishes the annual LBER building database (energy use for buildings ≥20,000 sq ft); owners in municipal-light-plant territories were excused from reporting MLP electricity this cycle",
+      "tag": "groove",
+      "sourceLabel": "Mass.gov (DOER LBER)",
+      "sourceUrl": "https://www.mass.gov/info-details/large-building-energy-reporting-policy"
+    },
+    {
+      "title": "Oct 14 — Evanston (Illinois) — 85% of large buildings now benchmark; city to start enforcing $250/month non-reporting fee next year as Healthy Buildings rules near final",
+      "tag": "groove",
+      "sourceLabel": "The Daily Northwestern",
+      "sourceUrl": "https://dailynorthwestern.com/2026/10/14/city/evanston-weighs-affordability-compliance-as-committees-finalize-rules-for-healthy-buildings-ordinance/"
+    },
+    {
+      "title": "Oct 14 — Axle Energy opens its UK VPP to AlphaESS home-battery owners: £1/kWh for grid services, £10/month minimum",
       "tag": "harmony",
-      "sourceLabel": "DT Next",
-      "sourceUrl": "https://www.dtnext.in/news/tamilnadu/tnpdcl-plans-smart-meter-app-to-track-usage-pay-electricity-bills-lodge-complaints"
+      "sourceLabel": "Axle Energy",
+      "sourceUrl": "https://www.axle.energy/blog/alphaess-is-now-live-in-the-axle-virtual-power-plant"
     }
   ],
   "compliance": [
     {
-      "title": "Energize Denver: federal EPCA challenge proceeds; 2026 Rules stay enforceable, and Freddie Mac now underwrites for compliance",
-      "tag": "both",
-      "segment": "mid",
-      "region": "Denver, CO",
-      "kind": "in-window",
-      "summary": "Owners of Denver buildings 25,000 sq ft and up, including multifamily. Oct 2: the court let the challenge to the building performance standards proceed, but the rules remain in effect. Lenders may ask for benchmarking status and require reserves. Source dated Oct 9, 2026.",
-      "sourceLabel": "Rocky Mountain Real Estate Law (Otten Johnson)",
-      "sourceUrl": "https://www.rockymountainrealestatelaw.com/2026/10/energize-denver-update-federal-court-challenge-and-new-lender-requirement/"
-    },
-    {
-      "title": "NYC Local Law 97 first enforcement year: 95% of filers met limits; 7% missed the deadline and face notices and fines",
-      "tag": "harmony",
-      "segment": "large",
-      "region": "New York City, NY",
-      "kind": "in-window",
-      "summary": "Owners of buildings over 25,000 sq ft (45% of reporting properties are multifamily). DOB is issuing notices of deficiency and fines; some affordable buildings start reporting in 2027 or 2036. Source dated Oct 7, 2026.",
-      "sourceLabel": "Planetizen",
-      "sourceUrl": "https://www.planetizen.com/news/2026/10/138592-nyc-building-owners-overwhelmingly-comply-new-emissions-limits"
-    },
-    {
-      "title": "RUBS pushback: San Diego tenants invoke the Residential Utility Fee Ordinance to force bill disclosure and cap charges",
+      "title": "Connecticut Public Act 26-113 (SB 335): tenant utility charges unenforceable without a separate per-unit meter",
       "tag": "groove",
-      "segment": "small",
-      "region": "San Diego, CA",
-      "kind": "in-window",
-      "summary": "Landlords billing water, sewer or trash through ratio formulas (RUBS) can't charge more than the city bills, and tenants can demand the building's bills. Source dated Oct 7, 2026.",
-      "sourceLabel": "Voice of San Diego",
-      "sourceUrl": "https://voiceofsandiego.org/2026/10/07/how-san-diego-tenants-went-on-strike-over-their-utility-bills-and-won/"
-    },
-    {
-      "title": "Connecticut SB335: utility charges unenforceable without a per-unit meter, for leases signed or renewed from Oct 1, 2026",
-      "tag": "both",
       "segment": "all",
       "region": "Connecticut",
       "kind": "in-effect",
-      "summary": "Applies to all residential landlords regardless of size; RUBS and master-meter allocation no longer enforceable in new or renewed leases. Secondary explainer, not checked against the statute text. Source undated (accessed Oct 14, 2026).",
-      "sourceLabel": "Resignal (secondary)",
-      "sourceUrl": "https://resignal.net/insights/ct-sb00335-real-estate-and-property-management"
+      "summary": "Effective Oct 1, 2026 for rental agreements entered into or renewed on or after that date; amends C.G.S. 47a-4. Applies to residential landlords of every size. Official act text, approved June 4, 2026.",
+      "sourceLabel": "Connecticut General Assembly",
+      "sourceUrl": "https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00113-R00SB-00335-PA.pdf"
     },
     {
-      "title": "Upcoming deadline: DC BEPS Cycle 1 ends Dec 31, 2026; final-year energy data due May 2027",
+      "title": "Massachusetts LBER: DOER posts building-level energy data by Oct 31; next owner report due June 30, 2027",
       "tag": "harmony",
-      "segment": "large",
-      "region": "Washington, DC",
-      "kind": "upcoming-deadline",
-      "summary": "Private buildings over 50,000 sq ft. Shortfalls owe a compliance payment; a Good Faith Effort framework is expected in late 2026. DOEE release, Aug 11, 2026.",
-      "sourceLabel": "DC DOEE",
-      "sourceUrl": "https://doee.dc.gov/release/beps-revised-guidebook-finalized-new-flexible-options-available-building-owners"
-    },
-    {
-      "title": "Upcoming deadline: Washington CBPS Tier 1 (90,001–220,000 sq ft) due June 1, 2027; Tier 2 (20,001–50,000 sq ft, plus multifamily over 20,000 sq ft) due July 1, 2027",
-      "tag": "both",
       "segment": "mid",
-      "region": "Washington State",
-      "kind": "upcoming-deadline",
-      "summary": "Tier 1 penalties up to $5,000 plus $1.50 per sq ft. WA Commerce CBPS page (accessed Oct 14, 2026).",
-      "sourceLabel": "WA Department of Commerce",
-      "sourceUrl": "https://www.commerce.wa.gov/cbps/"
-    },
-    {
-      "title": "Upcoming deadline: Cambridge BEUDO annual report due May 1; non-residential buildings of 100,000+ sq ft must cut emissions 20% over 2026–2029",
-      "tag": "harmony",
-      "segment": "large",
-      "region": "Cambridge, MA",
-      "kind": "upcoming-deadline",
-      "summary": "Residential buildings with 50+ units report only; non-residential 25,000–99,999 sq ft must stay below baseline until 2030. City of Cambridge BEUDO page (accessed Oct 14, 2026).",
-      "sourceLabel": "City of Cambridge",
-      "sourceUrl": "https://www.cambridgema.gov/departments/officeofsustainability/buildingenergyusedisclosureordinance"
-    },
-    {
-      "title": "Upcoming deadline: California AB 802 benchmarking due June 1 every year, so next due June 1, 2027",
-      "tag": "harmony",
-      "segment": "large",
-      "region": "California",
-      "kind": "upcoming-deadline",
-      "summary": "Commercial buildings over 50,000 sq ft, and multifamily over 50,000 sq ft with 17+ utility accounts; the CEC may fine after a 30-day cure period. CEC program page (accessed Oct 14, 2026).",
-      "sourceLabel": "California Energy Commission",
-      "sourceUrl": "https://www.energy.ca.gov/programs-and-topics/programs/building-energy-benchmarking-program"
-    },
-    {
-      "title": "Upcoming deadline: Mass Save 2026 heat-pump rebates require installation by Dec 31, 2026 and paperwork by Feb 28, 2027; nameplate serial-number photo required since Oct 1",
-      "tag": "groove",
-      "segment": "small",
       "region": "Massachusetts",
       "kind": "upcoming-deadline",
-      "summary": "Residential accounts, including 1–4 unit rentals; whole-home rebate up to $8,500. Mass Save page (accessed Oct 14, 2026).",
-      "sourceLabel": "Mass Save",
-      "sourceUrl": "https://www.masssave.com/residential/rebates-offers-services/heating-and-cooling/heat-pumps/air-source-heat-pumps"
+      "summary": "Buildings ≥20,000 sq ft. Utilities report electricity, gas and steam; owners report oil, propane, wood and on-site renewables. Disclosure only, no performance target. DOER policy page (accessed Oct 15, 2026).",
+      "sourceLabel": "Mass.gov (DOER)",
+      "sourceUrl": "https://www.mass.gov/info-details/large-building-energy-reporting-policy"
+    },
+    {
+      "title": "NYC Local Law 97: 2030 limits tighten; only 43% of covered buildings already meet them, and retrofits take 2–4 years",
+      "tag": "harmony",
+      "segment": "large",
+      "region": "New York City",
+      "kind": "upcoming-deadline",
+      "summary": "Buildings over 25,000 sq ft; $268 per tCO2e over the cap each year. Article dated Oct 6, 2026 (before this window), citing DOB, Urban Green Council and Verdantix.",
+      "sourceLabel": "Environment+Energy Leader",
+      "sourceUrl": "https://www.environmentenergyleader.com/stories/nyc-local-law-97-2030-limits-make-retrofit-timing-urgent,142522"
+    },
+    {
+      "title": "Evanston Healthy Buildings Ordinance: rules due 2027 for buildings over 20,000 sq ft; benchmarking fine enforcement starts next year",
+      "tag": "groove",
+      "segment": "mid",
+      "region": "Evanston, IL",
+      "kind": "in-window",
+      "summary": "Reporting of energy and water use plus net-zero-by-2050 plans; alternative compliance pathways and aid for equity-priority buildings in development. Oct 14, 2026.",
+      "sourceLabel": "The Daily Northwestern",
+      "sourceUrl": "https://dailynorthwestern.com/2026/10/14/city/evanston-weighs-affordability-compliance-as-committees-finalize-rules-for-healthy-buildings-ordinance/"
+    },
+    {
+      "title": "UK commercial MEES: EPC B from 2031 for privately rented non-domestic buildings over 1,000 m² (where cost-effective); smaller stay at EPC E",
+      "tag": "enterprise",
+      "segment": "large",
+      "region": "England & Wales (UK)",
+      "kind": "upcoming-deadline",
+      "summary": "Based on the Government’s June 18, 2026 interim response; interim EPC C step dropped; secondary legislation still needed. Agent explainer dated Oct 14, 2026 (secondary).",
+      "sourceLabel": "Hazells (secondary)",
+      "sourceUrl": "https://www.hazells.co.uk/commercial-epc-rules-government-confirms-2031-epc-b-target/"
+    },
+    {
+      "title": "UK domestic MEES: an EPC rated C before Oct 1, 2029 counts as compliant with the 2030 standard until it expires",
+      "tag": "groove",
+      "segment": "small",
+      "region": "England & Wales (UK)",
+      "kind": "upcoming-deadline",
+      "summary": "New-style multi-rating EPCs expected late 2027; proposed £10,000 cost cap; not yet legislated. Letting-agent explainer dated Oct 14, 2026 (secondary).",
+      "sourceLabel": "CPS Homes (secondary)",
+      "sourceUrl": "https://www.cpshomes.co.uk/cps-blog/2026/10/14/epc--minimum-energy-efficiency-standards-mees-update"
     }
   ],
   "stories": [
     {
-      "title": "Oct 12 — Ollama v0.40.4: “decision models” from the CLI (yes/no, classify, rubric scoring), multimodal embeddings via llama-server, MLX runner fixes",
+      "title": "Oct 15 — Nvidia Nemotron 3.5 Bolt 74B-A9B: open MoE (9B active) squeezed to 24GB with 2-bit QAT; day-one llama.cpp, Ollama, vLLM, LM Studio; llama.cpp also adds decision-model support",
       "tag": "harmony",
-      "sourceLabel": "GitHub (ollama/ollama)",
-      "sourceUrl": "https://github.com/ollama/ollama/releases/tag/v0.40.4"
+      "sourceLabel": "NVIDIA Blog (Oct 13 announcement)",
+      "sourceUrl": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/"
     },
     {
-      "title": "Oct 13 — DoorLoop 2.0: ground-up rebuild for small-to-mid property managers, with 5 operational dashboards and AI agents working inside accounting, leases and payments",
+      "title": "Oct 13 — Liquid AI LFM2.5-24B-A2B: open-weight local agent model, 2.45B active, 131K context; separate commercial license above $10M revenue",
+      "tag": "harmony",
+      "sourceLabel": "TechRepublic",
+      "sourceUrl": "https://www.techrepublic.com/article/news-liquid-ai-lfm25-24b-a2b-local-ai/"
+    },
+    {
+      "title": "Oct 15 — RentValet early-access pilot: AI agents for landlords with 1–50 units handle tenant email/SMS, maintenance triage, vendor dispatch and late-rent follow-ups (30-day trial, up to 3 units)",
       "tag": "groove",
-      "sourceLabel": "PRWeb (DoorLoop)",
-      "sourceUrl": "https://www.prweb.com/releases/doorloop-launches-doorloop-2-0--rebuilding-property-management-software-for-what-comes-next-302903245.html"
+      "sourceLabel": "ForPressRelease (RentValet)",
+      "sourceUrl": "https://forpressrelease.com/forpressrelease/676953/17/rentvalet-launches-ai-powered-property-manager-to-give-small-landlords-their-weekends-back"
     },
     {
-      "title": "Oct 13 — RealPage plugs screening, payments and pricing into Funnel’s AI front office; also notes an agreement with Conservice, a utility-billing competitor",
-      "tag": "groove",
-      "sourceLabel": "Multifamily Dive",
-      "sourceUrl": "https://www.multifamilydive.com/news/front-office-artificial-intelligence-property-management-system/832898/"
-    },
-    {
-      "title": "Oct 10 — Creator: Kling 4.0 (released Oct 8) brings native 30-second clips, multi-keyframe control and multilingual lip-sync; third-party write-up from Enkio",
-      "tag": "bonus",
-      "sourceLabel": "Enkio (third-party)",
-      "sourceUrl": "https://enkiomv.ai/en/discover/enkio-support-kling-4-0.html"
-    },
-    {
-      "title": "Oct 13 — Nate B. Jones: “Narrow superintelligence” argues AI strengths may not transfer between tasks; paid pilots need task-specific acceptance criteria. Only the public preview was reviewed",
+      "title": "Oct 15 — Meta Muse Wonder and Muse Wonder Full: agent-focused frontier models with “Active Memory”; Muse Wonder on the Meta Model API today",
       "tag": "enterprise",
-      "sourceLabel": "Nate’s Newsletter",
-      "sourceUrl": "https://natesnewsletter.substack.com/p/narrow-superintelligence-ai"
+      "sourceLabel": "WebWire (Meta release)",
+      "sourceUrl": "https://www.webwire.com/ViewPressRel.asp?aId=362872"
     },
     {
-      "title": "Oct 13 — DXC + LangChain: OASIS agent harness in production on LangGraph, scaling toward 125 customer environments (vendor-reported outcomes)",
+      "title": "Oct 14 — SolarWinds Avior: goal-oriented IT ops agents with risk-tiered autonomy, human approval for risky actions and automated rollback",
       "tag": "enterprise",
-      "sourceLabel": "DXC Newsroom",
-      "sourceUrl": "https://dxc.com/newsroom/10132026-dxc-and-langchain-advance-agentic-ai-harnesses"
+      "sourceLabel": "SolarWinds",
+      "sourceUrl": "https://www.solarwinds.com/company/newsroom/press-releases/solarwinds-unveils-avior-bringing-deterministic-agentic-ai-to-enterprise-it"
     },
     {
-      "title": "Demand example, posted Aug 28 (before this window) — Upwork brief for an “AI knowledge governance architect”: source authority, access controls, escalation, phased roadmap ($15–30/hr listed)",
+      "title": "Oct 14 — NeuBird Agentic Reliability Center GA: one metered, audited gateway for all agents touching production, MCP for Claude Code, Cursor and Codex (vendor-reported metrics)",
       "tag": "enterprise",
-      "sourceLabel": "Upwork",
-      "sourceUrl": "https://www.upwork.com/freelance-jobs/apply/Senior-Knowledge-Governance-Architect_~022093281430795480734/"
-    },
-    {
-      "title": "Demand example, posted Oct 7 (within this window) — Upwork brief for an n8n agent build with handover: Docker, retries, credential handling, edge-case tests ($5 listed, not a credible budget)",
-      "tag": "enterprise",
-      "sourceLabel": "Upwork",
-      "sourceUrl": "https://www.upwork.com/freelance-jobs/apply/Automation-Agent-Developer-n8n-Build-Custom-Agents-and-Workflow-Automations_~022107827170265747888/"
+      "sourceLabel": "NeuBird",
+      "sourceUrl": "https://neubird.ai/press/neubird-launches-agentic-reliability-center"
     }
   ]
 };
