@@ -29,6 +29,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from build_manifest import js_object_to_json, REPORT_RE  # type: ignore
 
 ALLOWED_TAGS = {"groove", "harmony", "both", "enterprise", "bonus"}
+COMPLIANCE_SEGMENTS = {"small", "mid", "large", "all"}
+COMPLIANCE_KINDS = {"in-window", "in-effect", "upcoming-deadline"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
@@ -106,6 +108,34 @@ def validate_report(report: Any, where: str) -> list[str]:
             _fail(errors, loc, "missing/invalid 'sourceUrl'")
         if not isinstance(s.get("sourceLabel"), str) or not s["sourceLabel"].strip():
             _fail(errors, loc, "missing 'sourceLabel'")
+
+    compliance = report.get("compliance")
+    if compliance is None:
+        compliance = []
+    if not isinstance(compliance, list):
+        _fail(errors, where, "REPORT.compliance must be an array (or omitted)")
+        compliance = []
+    for i, c in enumerate(compliance):
+        loc = f"{where} compliance[{i}]"
+        if not isinstance(c, dict):
+            _fail(errors, loc, "not an object")
+            continue
+        if not isinstance(c.get("title"), str) or not c["title"].strip():
+            _fail(errors, loc, "missing 'title' string")
+        if c.get("tag") not in ALLOWED_TAGS:
+            _fail(errors, loc, f"tag must be one of {sorted(ALLOWED_TAGS)}, got {c.get('tag')!r}")
+        if c.get("segment") not in COMPLIANCE_SEGMENTS:
+            _fail(errors, loc, f"segment must be one of {sorted(COMPLIANCE_SEGMENTS)}, got {c.get('segment')!r}")
+        if not isinstance(c.get("region"), str) or not c["region"].strip():
+            _fail(errors, loc, "missing 'region' string")
+        if "kind" in c and c["kind"] not in COMPLIANCE_KINDS:
+            _fail(errors, loc, f"kind must be one of {sorted(COMPLIANCE_KINDS)}, got {c['kind']!r}")
+        if not isinstance(c.get("sourceUrl"), str) or not c["sourceUrl"].startswith(("http://", "https://")):
+            _fail(errors, loc, "missing/invalid 'sourceUrl'")
+        if not isinstance(c.get("sourceLabel"), str) or not c["sourceLabel"].strip():
+            _fail(errors, loc, "missing 'sourceLabel'")
+    if len(compliance) > 20:
+        _fail(errors, where, f"too many compliance items ({len(compliance)}); cap is 20")
 
     # Counts: must have at least one spotlight (we already checked) and not exceed 8 total
     # to catch runaway generators.  README cap is 4 spotlights; we leave headroom for stories.

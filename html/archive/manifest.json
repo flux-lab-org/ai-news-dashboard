@@ -22,6 +22,14 @@
         "Energy Tech",
         "WWLP-22News",
         "DT Next",
+        "Rocky Mountain Real Estate Law (Otten Johnson)",
+        "Planetizen",
+        "Resignal (secondary)",
+        "DC DOEE",
+        "WA Department of Commerce",
+        "City of Cambridge",
+        "California Energy Commission",
+        "Mass Save",
         "GitHub (ollama/ollama)",
         "PRWeb (DoorLoop)",
         "Multifamily Dive",
@@ -33,6 +41,7 @@
       "spotlight_count": 4,
       "story_count": 8,
       "energy_count": 5,
+      "compliance_count": 9,
       "keywords": [
         "Oct 7 \u2014 San Diego tenants strike over RUBS utility bills and win a $100 cap",
         "Voice of San Diego",
@@ -73,7 +82,7 @@
         "Oct 12 \u2014 Smart meters: Tamil Nadu\u2019s TNPDCL specs a consumer app for its 1.74-crore smart-meter rollout \u2014 near-real-time usage, time-of-use views, 12-month history, CSV export",
         "DT Next",
         "harmony",
-        "Oct 12 \u2014 Ollama v0.40.4: \u201cdecision models\u201d from the CLI (yes/no, classify, rubric scoring), multimodal embeddings via llama-server, MLX runner fixes"
+        "Energize Denver: federal EPCA challenge proceeds; 2026 Rules stay enforceable, and Freddie Mac now underwrites for compliance"
       ]
     },
     {
@@ -103,6 +112,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Matter + OpenADR liaison: standards groups align to connect smart-home devices to utility demand-response via an energy gateway",
         "Connectivity Standards Alliance",
@@ -172,6 +182,7 @@
       "spotlight_count": 4,
       "story_count": 7,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Matter + OpenADR: standard path from smart home devices to utility demand response (OpenADR 3 via an energy gateway)",
         "The Verge",
@@ -241,6 +252,7 @@
       "spotlight_count": 4,
       "story_count": 5,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "ServiceNow expands AI Control Tower into an end-to-end governance layer for agents and AI workflows",
         "ServiceNow Newsroom",
@@ -311,6 +323,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "ServiceNow expands AI Control Tower into an end-to-end governance layer for agents and AI workflows",
         "ServiceNow Newsroom",
@@ -381,6 +394,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "New Jersey BPU opens a Virtual Power Plant (VPP) RFI tied to distributed storage incentives",
         "New Jersey Board of Public Utilities (PDF)",
@@ -449,6 +463,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Microsoft Entra ID Governance adds agent identity lifecycle: sponsors + access packages (Preview)",
         "Microsoft Learn",
@@ -517,6 +532,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Microsoft Agent 365 ships Entra ID Governance for agents (access packages + sponsor lifecycle)",
         "Microsoft Tech Community",
@@ -586,6 +602,7 @@
       "spotlight_count": 4,
       "story_count": 5,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "OpenADR + smart meters: DLMS UA and OpenADR Alliance align on grid-edge interoperability",
         "Morningstar (Accesswire)",
@@ -655,6 +672,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Grid-edge AI goes from pilot to tickets: Sense Waveform AI flags transformer-level faults",
         "Turns distribution analytics into actionable tickets \u2014 a concrete pattern for scaling AI ops in utility environments.",
@@ -725,6 +743,7 @@
       "spotlight_count": 4,
       "story_count": 7,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Google Cloud Next '26: Gemini Enterprise Agent Platform supersedes Vertex AI as the agentic control plane",
         "Google Cloud Blog",
@@ -796,6 +815,7 @@
       "spotlight_count": 4,
       "story_count": 7,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Okta launches a blueprint for securing AI agents as first-class identities",
         "Okta",
@@ -866,6 +886,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Google Cloud launches Gemini Enterprise Agent Platform",
         "Google Cloud Blog",
@@ -936,6 +957,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Ping Identity makes 'Identity for AI' generally available for runtime agent IAM",
         "Ping Identity press release",
@@ -1002,6 +1024,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Voltus + Octopus partner on 'bring-your-own-capacity' VPPs \u2014 a template for turning distributed devices into a data-center-era capacity product",
         "Voltus (historically C&I demand response) announced a partnership with Octopus Energy U.S. to source aggregations of residential devices in markets like PJM, MISO, New York, and California \u2014 extending Voltus\u2019 VPP playbook into 'bring-your-own-capacity' offerings aimed at fast, modular capacity in constrained regions.",
@@ -1069,6 +1092,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "VPP scale hits 37.5 GW in North America \u2014 and policy is starting to treat demand flexibility as capacity",
         "Wood Mackenzie estimates North American virtual power plant capacity reached 37.5 GW in 2025 (up 13.7% YoY), while PJM raised demand-side resource ELCC to 92% for the 2027\u201328 capacity auction \u2014 a quiet signal that flexibility is being priced like generation. The trendline: utilities and grid operators want bigger, more dispatchable portfolios (not one-off pilots), which is pushing aggregators toward better forecasting, verification, and tighter wholesale-local coordination.",
@@ -1140,6 +1164,7 @@
       "spotlight_count": 4,
       "story_count": 7,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "Minnesota PUC approves Xcel's 200 MW utility-owned VPP expansion \u2014 community-sited BESS phase 2 deploys through 2028",
         "The Minnesota Public Utilities Commission approved Phase 2 of Xcel Energy's Capacity*Connect VPP on April 10, clearing the utility to deploy up to 200 MW of 1\u20133 MW distributed battery systems 'sited closer to where people live and work' by 2028. The project stacks on Xcel's 600 MW Sherco Energy Hub and the 30 GWh iron-air Form Energy deployment for Google's Pine Island data center, positioning utility-owned VPPs as a mainstream grid resource rather than a pilot.",
@@ -1210,6 +1235,7 @@
       "spotlight_count": 4,
       "story_count": 6,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "DLMS UA and OpenADR Alliance sign global liaison to bridge smart-meter data and grid-edge flexibility signalling",
         "The two standards bodies announced a liaison agreement to map COSEM (smart-meter data exchange) to OpenADR (DR/DER signalling), coordinate certifications, and explore DLMS/COSEM transport over OpenADR. The practical outcome for vendors: one less bespoke integration layer between meters, HEMS, and flexibility services.",
@@ -1276,6 +1302,7 @@
       "spotlight_count": 2,
       "story_count": 5,
       "energy_count": 0,
+      "compliance_count": 0,
       "keywords": [
         "AI-Based HVAC Optimization Delivers 20\u201330% Savings with Sub-2-Year Payback",
         "New commercial real estate case studies confirm AI-driven HVAC control cuts energy use by 20\u201330% in mixed-use buildings, with payback periods under 24 months. Predictive scheduling and occupancy-sensing are the primary levers \u2014 a direct match for GrooveGrid's positioning in small multi-tenant properties.",
