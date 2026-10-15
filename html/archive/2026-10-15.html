@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily AI Intel — Prevwind</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222536;
+    --border: #2e3149;
+    --text: #e8eaf0;
+    --muted: #8b90a8;
+    --groove: #22c55e;
+    --groove-bg: rgba(34,197,94,0.10);
+    --groove-border: rgba(34,197,94,0.30);
+    --harmony: #818cf8;
+    --harmony-bg: rgba(129,140,248,0.10);
+    --harmony-border: rgba(129,140,248,0.30);
+    --both: #38bdf8;
+    --both-bg: rgba(56,189,248,0.10);
+    --both-border: rgba(56,189,248,0.30);
+    --enterprise: #fb923c;
+    --enterprise-bg: rgba(251,146,60,0.10);
+    --enterprise-border: rgba(251,146,60,0.30);
+    --bonus: #f472b6;
+    --bonus-bg: rgba(244,114,182,0.10);
+    --bonus-border: rgba(244,114,182,0.30);
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 24px 16px 48px;
+    min-height: 100vh;
+  }
+
+  /* ── Header ─────────────────────────────── */
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .brand h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .brand span {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .archive-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .archive-link:hover {
+    color: var(--text);
+    border-color: var(--both-border);
+    background: var(--both-bg);
+  }
+  .archive-banner {
+    max-width: 1100px;
+    margin: -8px auto 20px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--bonus);
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  #report-date {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── Section labels ─────────────────────── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  /* ── Spotlights grid ────────────────────── */
+  .spotlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto 32px;
+  }
+
+  /* ── Card ───────────────────────────────── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.15s;
+  }
+
+  .card:hover { border-color: #3e4265; }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .pill {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* pill variants */
+  .pill-groove    { background: var(--groove-bg);     color: var(--groove);     border: 1px solid var(--groove-border); }
+  .pill-harmony   { background: var(--harmony-bg);    color: var(--harmony);    border: 1px solid var(--harmony-border); }
+  .pill-both      { background: var(--both-bg);       color: var(--both);       border: 1px solid var(--both-border); }
+  .pill-enterprise{ background: var(--enterprise-bg); color: var(--enterprise); border: 1px solid var(--enterprise-border); }
+  .pill-bonus     { background: var(--bonus-bg);      color: var(--bonus);      border: 1px solid var(--bonus-border); }
+
+  /* spotlight card accent stripe */
+  .card.spotlight-flux      { border-top: 3px solid var(--groove); }
+  .card.spotlight-harmony   { border-top: 3px solid var(--harmony); }
+  .card.spotlight-both      { border-top: 3px solid var(--both); }
+  .card.spotlight-enterprise{ border-top: 3px solid var(--enterprise); }
+  .card.spotlight-bonus     { border-top: 3px solid var(--bonus); }
+
+  .card h2 {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  .card p {
+    font-size: 13px;
+    color: #b0b4cc;
+    line-height: 1.65;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    gap: 8px;
+  }
+
+  .relevance {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .source-link {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+
+  .source-link:hover { color: var(--text); }
+  .source-link svg { flex-shrink: 0; }
+
+  /* ── More stories ───────────────────────── */
+  .more-section {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .story-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .story-item {
+    background: var(--surface);
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: start;
+    gap: 12px;
+    transition: background 0.12s;
+  }
+
+  .story-item:hover { background: var(--surface2); }
+
+  .story-pill { margin-top: 2px; }
+
+  .story-body { min-width: 0; }
+
+  .story-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+    line-height: 1.4;
+  }
+
+  .story-summary {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .story-source {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    margin-top: 3px;
+    transition: color 0.15s;
+  }
+
+  .story-source:hover { color: var(--text); }
+
+  /* ── Empty / error states ───────────────── */
+  .empty {
+    text-align: center;
+    padding: 48px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* ── Footer ─────────────────────────────── */
+  footer {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* render-fix v1 bullets css */
+  .card .bullets {
+    list-style: disc;
+    padding-left: 18px;
+    margin: 0;
+    color: #b0b4cc;
+    font-size: 13px;
+    line-height: 1.65;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .card .bullets li {
+    margin-left: 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <h1>Daily AI Intel</h1>
+    <span>Prevwind · Project Flux · Archived</span>
+  </div>
+  <div class="header-right">
+    <a class="archive-link" href="../" title="Back to latest">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Latest
+    </a>
+    <a class="archive-link" href="index.html" title="Browse archive">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8"/><path d="M10 12h4"/></svg>
+      Archive
+    </a>
+    <div id="report-date">2026-10-15</div>
+  </div>
+</header>
+
+<div class="archive-banner">
+  Viewing archived report. <a href="../" style="color:var(--both)">Go to today's dashboard</a> or <a href="index.html" style="color:var(--both)">browse all archives</a>.
+</div>
+
+<!-- ── Spotlight section ──────────────────────── -->
+<div class="section-label" style="max-width:1100px;margin:0 auto 12px;">Spotlights</div>
+<div class="spotlights" id="spotlight-grid"></div>
+
+<!-- ── Energy ─────────────────────────────────── -->
+<div class="more-section" id="energy-section">
+  <div class="section-label">Energy</div>
+  <div class="story-list" id="energy-list"></div>
+</div>
+
+<!-- ── Regulatory & Compliance ───────────────── -->
+<div class="more-section" id="compliance-section">
+  <div class="section-label">Regulatory &amp; Compliance</div>
+  <div class="story-list" id="compliance-list"></div>
+</div>
+
+<!-- ── More stories ──────────────────────────── -->
+<div class="more-section">
+  <div class="section-label">More Stories</div>
+  <div class="story-list" id="story-list"></div>
+</div>
+
+<footer>
+  <span>Auto-generated · Prevwind internal</span>
+  <span id="footer-count"></span>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     DATA — edit this object to update the report
+     ════════════════════════════════════════════ -->
+<script>
+const REPORT = {
+  "date": "2026-10-15",
+  "spotlights": [
+    {
+      "title": "Oct 14 — Brattle: scaling residential VPPs to 35 GW could cut household bill increases by more than half",
+      "tag": "both",
+      "bullets": [
+        "If every U.S. utility hit a 4% system peak reduction with residential VPPs (already done by the top 10% of DR programs), capacity would grow from ~10 GW to 35 GW.",
+        "Brattle estimates $4–7B a year in household benefits, including ~$1.9B paid directly to participating customers; it recommends OEM-led enrollment of thermostats, EVs and batteries.",
+        "Report (Oct 13) was prepared for Everyday Electric, a DER aggregator, so read it as sponsored analysis. Utility Dive coverage, Oct 14."
+      ],
+      "sourceLabel": "Utility Dive",
+      "sourceUrl": "https://www.utilitydive.com/news/scaling-vpps-could-cut-electric-bill-increases-by-half-brattle/832956/"
+    },
+    {
+      "title": "Oct 15 — Connecticut Public Act 26-113 (SB 335) is in force: no utility charges without a per-unit meter",
+      "tag": "groove",
+      "bullets": [
+        "For rental agreements entered into or renewed on or after Oct 1, 2026, a lease can’t make a tenant pay for utilities unless a separate meter measures that unit only; such clauses are unenforceable.",
+        "Signed June 4, 2026. RUBS and master-meter allocation in new or renewed CT leases are out.",
+        "GrooveGrid angle (our read): CT landlords on shared meters need a submetering or rent-inclusive plan before each renewal."
+      ],
+      "sourceLabel": "Connecticut General Assembly (Public Act 26-113)",
+      "sourceUrl": "https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00113-R00SB-00335-PA.pdf"
+    },
+    {
+      "title": "Oct 14 — Claude Platform exports OpenTelemetry traces from the Messages API, Managed Agents and SDKs (public beta)",
+      "tag": "enterprise",
+      "bullets": [
+        "Each agent turn, model call and tool use becomes a standard OTel trace with latency, token counts and IDs, sent to Datadog, Grafana, Langfuse, LangSmith or any OTLP endpoint.",
+        "Server-side export needs no code changes; SDK tracing covers tools run in your own code. Span names may change during beta, so pin SDK versions.",
+        "Secondary write-up (TechCity Authority, Oct 15) citing Anthropic’s Oct 14 announcement."
+      ],
+      "sourceLabel": "TechCity Authority (secondary)",
+      "sourceUrl": "https://www.techcityauthority.com/2026/10/claude-platform-opentelemetry-traces-beta.html",
+      "bonus": true
+    },
+    {
+      "title": "Oct 14 — Medeo expands into a “Creative OS” with an AI music-video generator",
+      "tag": "bonus",
+      "bullets": [
+        "Upload a music file plus creative direction and Medeo generates a synchronized music video; also trend discovery, publishing and a creator marketplace in one workflow.",
+        "Reusable characters, styles and “Recipes” for repeatable formats; faceless explainer videos from a script.",
+        "Creator angle: worth a trial for lyric/worship clips, but check rights and output quality first. Vendor press release."
+      ],
+      "sourceLabel": "PR Newswire (Medeo)",
+      "sourceUrl": "https://www.prnewswire.com/news-releases/medeo-introduces-creative-os-taking-ai-video-from-trend-discovery-to-monetization-in-one-continuous-workflow-302909184.html",
+      "bonus": true
+    }
+  ],
+  "energy": [
+    {
+      "title": "Oct 14 — Brattle: residential VPPs at a 4% peak reduction could triple U.S. capacity to 35 GW and halve bill increases",
+      "tag": "both",
+      "sourceLabel": "Utility Dive",
+      "sourceUrl": "https://www.utilitydive.com/news/scaling-vpps-could-cut-electric-bill-increases-by-half-brattle/832956/"
+    },
+    {
+      "title": "Oct 13 — Energize CT C&I Committee deck on the landlord/renter split incentive: “energy-aligned” lease clause caps owner pass-through at 80% of predicted retrofit savings",
+      "tag": "groove",
+      "sourceLabel": "Energize CT (PDF)",
+      "sourceUrl": "https://www.energizect.com/sites/default/files/documents/%239%20-%20Addressing%20the%20Landlord%20-%20Renter%20Split_2026-10-13_CI_MM.pdf"
+    },
+    {
+      "title": "Upcoming Oct 31 — Massachusetts DOER publishes the annual LBER building database (energy use for buildings ≥20,000 sq ft); owners in municipal-light-plant territories were excused from reporting MLP electricity this cycle",
+      "tag": "groove",
+      "sourceLabel": "Mass.gov (DOER LBER)",
+      "sourceUrl": "https://www.mass.gov/info-details/large-building-energy-reporting-policy"
+    },
+    {
+      "title": "Oct 14 — Evanston (Illinois) — 85% of large buildings now benchmark; city to start enforcing $250/month non-reporting fee next year as Healthy Buildings rules near final",
+      "tag": "groove",
+      "sourceLabel": "The Daily Northwestern",
+      "sourceUrl": "https://dailynorthwestern.com/2026/10/14/city/evanston-weighs-affordability-compliance-as-committees-finalize-rules-for-healthy-buildings-ordinance/"
+    },
+    {
+      "title": "Oct 14 — Axle Energy opens its UK VPP to AlphaESS home-battery owners: £1/kWh for grid services, £10/month minimum",
+      "tag": "harmony",
+      "sourceLabel": "Axle Energy",
+      "sourceUrl": "https://www.axle.energy/blog/alphaess-is-now-live-in-the-axle-virtual-power-plant"
+    }
+  ],
+  "compliance": [
+    {
+      "title": "Connecticut Public Act 26-113 (SB 335): tenant utility charges unenforceable without a separate per-unit meter",
+      "tag": "groove",
+      "segment": "all",
+      "region": "Connecticut",
+      "kind": "in-effect",
+      "summary": "Effective Oct 1, 2026 for rental agreements entered into or renewed on or after that date; amends C.G.S. 47a-4. Applies to residential landlords of every size. Official act text, approved June 4, 2026.",
+      "sourceLabel": "Connecticut General Assembly",
+      "sourceUrl": "https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00113-R00SB-00335-PA.pdf"
+    },
+    {
+      "title": "Massachusetts LBER: DOER posts building-level energy data by Oct 31; next owner report due June 30, 2027",
+      "tag": "harmony",
+      "segment": "mid",
+      "region": "Massachusetts",
+      "kind": "upcoming-deadline",
+      "summary": "Buildings ≥20,000 sq ft. Utilities report electricity, gas and steam; owners report oil, propane, wood and on-site renewables. Disclosure only, no performance target. DOER policy page (accessed Oct 15, 2026).",
+      "sourceLabel": "Mass.gov (DOER)",
+      "sourceUrl": "https://www.mass.gov/info-details/large-building-energy-reporting-policy"
+    },
+    {
+      "title": "NYC Local Law 97: 2030 limits tighten; only 43% of covered buildings already meet them, and retrofits take 2–4 years",
+      "tag": "harmony",
+      "segment": "large",
+      "region": "New York City",
+      "kind": "upcoming-deadline",
+      "summary": "Buildings over 25,000 sq ft; $268 per tCO2e over the cap each year. Article dated Oct 6, 2026 (before this window), citing DOB, Urban Green Council and Verdantix.",
+      "sourceLabel": "Environment+Energy Leader",
+      "sourceUrl": "https://www.environmentenergyleader.com/stories/nyc-local-law-97-2030-limits-make-retrofit-timing-urgent,142522"
+    },
+    {
+      "title": "Evanston Healthy Buildings Ordinance: rules due 2027 for buildings over 20,000 sq ft; benchmarking fine enforcement starts next year",
+      "tag": "groove",
+      "segment": "mid",
+      "region": "Evanston, IL",
+      "kind": "in-window",
+      "summary": "Reporting of energy and water use plus net-zero-by-2050 plans; alternative compliance pathways and aid for equity-priority buildings in development. Oct 14, 2026.",
+      "sourceLabel": "The Daily Northwestern",
+      "sourceUrl": "https://dailynorthwestern.com/2026/10/14/city/evanston-weighs-affordability-compliance-as-committees-finalize-rules-for-healthy-buildings-ordinance/"
+    },
+    {
+      "title": "UK commercial MEES: EPC B from 2031 for privately rented non-domestic buildings over 1,000 m² (where cost-effective); smaller stay at EPC E",
+      "tag": "enterprise",
+      "segment": "large",
+      "region": "England & Wales (UK)",
+      "kind": "upcoming-deadline",
+      "summary": "Based on the Government’s June 18, 2026 interim response; interim EPC C step dropped; secondary legislation still needed. Agent explainer dated Oct 14, 2026 (secondary).",
+      "sourceLabel": "Hazells (secondary)",
+      "sourceUrl": "https://www.hazells.co.uk/commercial-epc-rules-government-confirms-2031-epc-b-target/"
+    },
+    {
+      "title": "UK domestic MEES: an EPC rated C before Oct 1, 2029 counts as compliant with the 2030 standard until it expires",
+      "tag": "groove",
+      "segment": "small",
+      "region": "England & Wales (UK)",
+      "kind": "upcoming-deadline",
+      "summary": "New-style multi-rating EPCs expected late 2027; proposed £10,000 cost cap; not yet legislated. Letting-agent explainer dated Oct 14, 2026 (secondary).",
+      "sourceLabel": "CPS Homes (secondary)",
+      "sourceUrl": "https://www.cpshomes.co.uk/cps-blog/2026/10/14/epc--minimum-energy-efficiency-standards-mees-update"
+    }
+  ],
+  "stories": [
+    {
+      "title": "Oct 15 — Nvidia Nemotron 3.5 Bolt 74B-A9B: open MoE (9B active) squeezed to 24GB with 2-bit QAT; day-one llama.cpp, Ollama, vLLM, LM Studio; llama.cpp also adds decision-model support",
+      "tag": "harmony",
+      "sourceLabel": "NVIDIA Blog (Oct 13 announcement)",
+      "sourceUrl": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/"
+    },
+    {
+      "title": "Oct 13 — Liquid AI LFM2.5-24B-A2B: open-weight local agent model, 2.45B active, 131K context; separate commercial license above $10M revenue",
+      "tag": "harmony",
+      "sourceLabel": "TechRepublic",
+      "sourceUrl": "https://www.techrepublic.com/article/news-liquid-ai-lfm25-24b-a2b-local-ai/"
+    },
+    {
+      "title": "Oct 15 — RentValet early-access pilot: AI agents for landlords with 1–50 units handle tenant email/SMS, maintenance triage, vendor dispatch and late-rent follow-ups (30-day trial, up to 3 units)",
+      "tag": "groove",
+      "sourceLabel": "ForPressRelease (RentValet)",
+      "sourceUrl": "https://forpressrelease.com/forpressrelease/676953/17/rentvalet-launches-ai-powered-property-manager-to-give-small-landlords-their-weekends-back"
+    },
+    {
+      "title": "Oct 15 — Meta Muse Wonder and Muse Wonder Full: agent-focused frontier models with “Active Memory”; Muse Wonder on the Meta Model API today",
+      "tag": "enterprise",
+      "sourceLabel": "WebWire (Meta release)",
+      "sourceUrl": "https://www.webwire.com/ViewPressRel.asp?aId=362872"
+    },
+    {
+      "title": "Oct 14 — SolarWinds Avior: goal-oriented IT ops agents with risk-tiered autonomy, human approval for risky actions and automated rollback",
+      "tag": "enterprise",
+      "sourceLabel": "SolarWinds",
+      "sourceUrl": "https://www.solarwinds.com/company/newsroom/press-releases/solarwinds-unveils-avior-bringing-deterministic-agentic-ai-to-enterprise-it"
+    },
+    {
+      "title": "Oct 14 — NeuBird Agentic Reliability Center GA: one metered, audited gateway for all agents touching production, MCP for Claude Code, Cursor and Codex (vendor-reported metrics)",
+      "tag": "enterprise",
+      "sourceLabel": "NeuBird",
+      "sourceUrl": "https://neubird.ai/press/neubird-launches-agentic-reliability-center"
+    }
+  ]
+};
+
+
+
+/* render-fix v1 — TAG_META + bullets */
+const TAG_META = {
+  groove:     { label: 'GrooveGrid',              pillClass: 'pill-groove',     cardClass: 'spotlight-flux'      },
+  harmony:    { label: 'HarmonyGrid',             pillClass: 'pill-harmony',    cardClass: 'spotlight-harmony'   },
+  both:       { label: 'GrooveGrid + HarmonyGrid',pillClass: 'pill-both',       cardClass: 'spotlight-both'      },
+  enterprise: { label: 'Enterprise',              pillClass: 'pill-enterprise', cardClass: 'spotlight-enterprise'},
+  bonus:      { label: 'Bonus',                   pillClass: 'pill-bonus',      cardClass: 'spotlight-bonus'     }
+};
+
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function pill(tag) {
+  const m = TAG_META[tag] || TAG_META.enterprise;
+  return `<span class="pill ${m.pillClass}">${escapeHTML(m.label)}</span>`;
+}
+
+function externalIcon() {
+  return `<svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7"/><polyline points="8 1 11 1 11 4"/><line x1="5" y1="7" x2="11" y2="1"/></svg>`;
+}
+
+/* ── Date ──────────────────────────────────────────────────────────────── */
+(function () {
+  try {
+    const d = new Date(REPORT.date + 'T12:00:00');
+    const fmt = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const el = document.getElementById('report-date');
+    if (el) el.textContent = fmt;
+  } catch (e) { /* non-fatal */ }
+})();
+
+/* ── Spotlights ────────────────────────────────────────────────────────── */
+const spotlightsAll = (REPORT && Array.isArray(REPORT.spotlights)) ? REPORT.spotlights : [];
+const visibleSpotlights = spotlightsAll.filter((s, i) => {
+  if (s && s.bonus) return true;
+  return i < 4;  // safety cap; matches README 'hard cap 4'
+});
+
+function spotlightCard(s) {
+  const m = TAG_META[s.tag] || TAG_META.enterprise;
+  const heading = escapeHTML(s.title || s.headline || '(untitled)');
+  const bulletsArr = Array.isArray(s.bullets) ? s.bullets : (s.summary ? [s.summary] : []);
+  const bulletsHTML = bulletsArr.length
+    ? `<ul class="bullets">${bulletsArr.map(b => `<li>${escapeHTML(b)}</li>`).join('')}</ul>`
+    : '';
+  const sourceLabel = escapeHTML(s.sourceLabel || 'Source');
+  const sourceUrl   = String(s.sourceUrl || '#');
+  return `
+    <div class="card ${m.cardClass}">
+      <div class="card-header">
+        <h2>${heading}</h2>
+        ${pill(s.tag)}
+      </div>
+      ${bulletsHTML}
+      <div class="card-footer">
+        <span class="relevance">${escapeHTML(s.relevance || '')}</span>
+        <a class="source-link" href="${sourceUrl}" target="_blank" rel="noopener">
+          ${externalIcon()} ${sourceLabel}
+        </a>
+      </div>
+    </div>`;
+}
+
+(function () {
+  const grid = document.getElementById('spotlight-grid');
+  if (!grid) return;
+  if (visibleSpotlights.length === 0) {
+    grid.innerHTML = `<div class="empty">No spotlights for today.</div>`;
+  } else {
+    grid.innerHTML = visibleSpotlights.map(spotlightCard).join('');
+  }
+})();
+
+/* ── Stories ───────────────────────────────────────────────────────────── */
+function storyRow(s) {
+  const title = escapeHTML(s.title || s.headline || '(untitled)');
+  const summary = escapeHTML(s.summary || '');
+  const sourceLabel = escapeHTML(s.sourceLabel || 'Source');
+  const sourceUrl   = String(s.sourceUrl || '#');
+  const summaryHTML = summary ? `<div class="story-summary">${summary}</div>` : '';
+  return `
+    <div class="story-item">
+      <div class="story-pill">${pill(s.tag)}</div>
+      <div class="story-body">
+        <div class="story-title">${title}</div>
+        ${summaryHTML}
+      </div>
+      <a class="story-source" href="${sourceUrl}" target="_blank" rel="noopener">
+        ${externalIcon()} ${sourceLabel}
+      </a>
+    </div>`;
+}
+
+(function () {
+  const list = document.getElementById('story-list');
+  if (!list) return;
+  const stories = (REPORT && Array.isArray(REPORT.stories)) ? REPORT.stories : [];
+  if (stories.length === 0) {
+    list.innerHTML = `<div class="empty">No additional stories today.</div>`;
+  } else {
+    list.innerHTML = stories.map(storyRow).join('');
+  }
+})();
+
+(function () {
+  const list = document.getElementById('energy-list');
+  const section = document.getElementById('energy-section');
+  if (!list) return;
+  const energy = (REPORT && Array.isArray(REPORT.energy)) ? REPORT.energy : [];
+  if (energy.length === 0) {
+    if (section) section.hidden = true;
+  } else {
+    list.innerHTML = energy.map(storyRow).join('');
+  }
+})();
+
+const SEGMENT_LABEL = { small: 'Small landlords', mid: 'Mid-size', large: 'Large / commercial', all: 'All landlords' };
+const KIND_LABEL = { 'upcoming-deadline': 'Upcoming deadline', 'in-effect': 'In effect', 'in-window': 'News' };
+(function () {
+  const list = document.getElementById('compliance-list');
+  const section = document.getElementById('compliance-section');
+  if (!list) return;
+  const items = (REPORT && Array.isArray(REPORT.compliance)) ? REPORT.compliance : [];
+  if (items.length === 0) {
+    if (section) section.hidden = true;
+    return;
+  }
+  list.innerHTML = items.map(c => {
+    const meta = [KIND_LABEL[c.kind], SEGMENT_LABEL[c.segment] || c.segment, c.region].filter(Boolean).join(' · ');
+    return storyRow(Object.assign({}, c, { summary: meta + (c.summary ? ' — ' + c.summary : '') }));
+  }).join('');
+})();
+
+/* ── Footer count ──────────────────────────────────────────────────────── */
+(function () {
+  const el = document.getElementById('footer-count');
+  if (!el) return;
+  const s = visibleSpotlights.length;
+  const t = (REPORT && Array.isArray(REPORT.stories)) ? REPORT.stories.length : 0;
+  const en = (REPORT && Array.isArray(REPORT.energy)) ? REPORT.energy.length : 0;
+  const cp = (REPORT && Array.isArray(REPORT.compliance)) ? REPORT.compliance.length : 0;
+  el.textContent = `${s} spotlight${s !== 1 ? 's' : ''} · ${en ? en + ' energy · ' : ''}${cp ? cp + ' compliance · ' : ''}${t} stories`;
+})();
+</script>
+</body>
+</html>
