@@ -40,6 +40,8 @@ async function checkOne(url) {
         // Optional Energy section: an empty/absent REPORT.energy is fine (section hidden);
         // a non-empty one must render one .story-item per entry.
         energyExpected: (typeof REPORT !== 'undefined' && REPORT && Array.isArray(REPORT.energy)) ? REPORT.energy.length : 0,
+        complianceExpected: (typeof REPORT !== 'undefined' && REPORT && Array.isArray(REPORT.compliance)) ? REPORT.compliance.length : 0,
+        compliance: (document.getElementById('compliance-list') || { querySelectorAll: () => [] }).querySelectorAll('.story-item').length,
         energy: (document.getElementById('energy-list') || { querySelectorAll: () => [] }).querySelectorAll('.story-item').length,
         bodyLength: document.body ? document.body.innerText.length : 0,
       };
@@ -53,6 +55,9 @@ async function checkOne(url) {
     }
     if (counts.energy !== counts.energyExpected) {
       errors.push(`energy-list rendered ${counts.energy} items, REPORT.energy has ${counts.energyExpected}`);
+    }
+    if (counts.compliance !== counts.complianceExpected) {
+      errors.push(`compliance-list rendered ${counts.compliance} items, REPORT.compliance has ${counts.complianceExpected}`);
     }
     if (counts.bodyLength < 200) {
       errors.push(`page body too short (${counts.bodyLength} chars) — likely blank`);
@@ -75,7 +80,7 @@ async function checkOne(url) {
   for (const u of urls) {
     const r = await checkOne(u);
     if (r.errors.length === 0) {
-      console.log(`  ok  ${u}  (${r.counts.spotlights} spotlights, ${r.counts.energy} energy, ${r.counts.stories} stories)`);
+      console.log(`  ok  ${u}  (${r.counts.spotlights} spotlights, ${r.counts.energy} energy, ${r.counts.compliance} compliance, ${r.counts.stories} stories)`);
     } else {
       failed++;
       console.error(`  FAIL  ${u}`);
