@@ -136,7 +136,7 @@ def _collect_keywords(report: dict) -> list[str]:
         for b in s.get("bullets") or []:
             if b:
                 bits.append(str(b))
-    for s in report.get("stories") or []:
+    for s in list(report.get("energy") or []) + list(report.get("stories") or []):
         for k in ("title", "summary", "sourceLabel", "tag"):
             v = s.get(k)
             if v:
@@ -147,6 +147,7 @@ def _collect_keywords(report: dict) -> list[str]:
 def summarize_entry(date: str, report: dict) -> dict:
     spotlights = report.get("spotlights") or []
     stories = report.get("stories") or []
+    energy = report.get("energy") or []
 
     # Lead title/summary = first spotlight (uses 'title' or legacy 'headline'),
     # else first story.  Summary falls back to first bullet for the new shape.
@@ -161,7 +162,7 @@ def summarize_entry(date: str, report: dict) -> dict:
     # Unique tags across the report
     tags = []
     seen = set()
-    for item in list(spotlights) + list(stories):
+    for item in list(spotlights) + list(energy) + list(stories):
         t = (item or {}).get("tag")
         if t and t not in seen:
             seen.add(t)
@@ -169,7 +170,7 @@ def summarize_entry(date: str, report: dict) -> dict:
 
     sources = []
     sseen = set()
-    for item in list(spotlights) + list(stories):
+    for item in list(spotlights) + list(energy) + list(stories):
         lbl = (item or {}).get("sourceLabel")
         if lbl and lbl not in sseen:
             sseen.add(lbl)
@@ -184,6 +185,7 @@ def summarize_entry(date: str, report: dict) -> dict:
         "sources": sources,
         "spotlight_count": len(spotlights),
         "story_count": len(stories),
+        "energy_count": len(energy),
         "keywords": _collect_keywords(report)[:40],
     }
 

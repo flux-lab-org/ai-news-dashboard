@@ -37,6 +37,10 @@ async function checkOne(url) {
         spotlights: grid ? grid.querySelectorAll('.card').length : 0,
         stories: list ? list.querySelectorAll('.story-item').length : 0,
         emptyStory: !!(list && list.querySelector('.empty')),
+        // Optional Energy section: an empty/absent REPORT.energy is fine (section hidden);
+        // a non-empty one must render one .story-item per entry.
+        energyExpected: (typeof REPORT !== 'undefined' && REPORT && Array.isArray(REPORT.energy)) ? REPORT.energy.length : 0,
+        energy: (document.getElementById('energy-list') || { querySelectorAll: () => [] }).querySelectorAll('.story-item').length,
         bodyLength: document.body ? document.body.innerText.length : 0,
       };
     });
@@ -46,6 +50,9 @@ async function checkOne(url) {
     }
     if (counts.stories < 1 && !counts.emptyStory) {
       errors.push(`story-list empty without explicit empty-state message`);
+    }
+    if (counts.energy !== counts.energyExpected) {
+      errors.push(`energy-list rendered ${counts.energy} items, REPORT.energy has ${counts.energyExpected}`);
     }
     if (counts.bodyLength < 200) {
       errors.push(`page body too short (${counts.bodyLength} chars) — likely blank`);
@@ -68,7 +75,7 @@ async function checkOne(url) {
   for (const u of urls) {
     const r = await checkOne(u);
     if (r.errors.length === 0) {
-      console.log(`  ok  ${u}  (${r.counts.spotlights} spotlights, ${r.counts.stories} stories)`);
+      console.log(`  ok  ${u}  (${r.counts.spotlights} spotlights, ${r.counts.energy} energy, ${r.counts.stories} stories)`);
     } else {
       failed++;
       console.error(`  FAIL  ${u}`);

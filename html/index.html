@@ -325,6 +325,12 @@
 <div class="section-label" style="max-width:1100px;margin:0 auto 12px;">Spotlights</div>
 <div class="spotlights" id="spotlight-grid"></div>
 
+<!-- ── Energy ─────────────────────────────────── -->
+<div class="more-section" id="energy-section">
+  <div class="section-label">Energy</div>
+  <div class="story-list" id="energy-list"></div>
+</div>
+
 <!-- ── More stories ──────────────────────────── -->
 <div class="more-section">
   <div class="section-label">More Stories</div>
@@ -355,17 +361,6 @@ const REPORT = {
       "sourceUrl": "https://voiceofsandiego.org/2026/10/07/how-san-diego-tenants-went-on-strike-over-their-utility-bills-and-won/"
     },
     {
-      "title": "Oct 14 — Sunrun and Tesla home batteries set 745 MW residential dispatch record in California",
-      "tag": "both",
-      "bullets": [
-        "669 MW on Oct 5 and 745 MW on Oct 6, called under California’s DSGS and ELRP demand-response programs during a heat wave.",
-        "Dispatches triggered when CAISO day-ahead prices exceeded $200/MWh; Sunrun has 120,000+ batteries enrolled.",
-        "Sunrun says the Google-funded PG&E distributed power plant (~21,000 devices) begins initial dispatch this month."
-      ],
-      "sourceLabel": "Sunrun (press release)",
-      "sourceUrl": "https://investors.sunrun.com/news-events/press-releases/detail/384/sunrun-leads-record-grid-dispatch-delivering-enough-energy"
-    },
-    {
       "title": "Oct 13 — Glean release 562: Fabric IQ MCP template plus tighter agent permission controls",
       "tag": "enterprise",
       "bullets": [
@@ -390,7 +385,19 @@ const REPORT = {
       "bonus": true
     }
   ],
-  "stories": [
+  "energy": [
+    {
+      "title": "Oct 7 — San Diego tenants strike over RUBS utility bills and win a $100 cap",
+      "tag": "groove",
+      "sourceLabel": "Voice of San Diego",
+      "sourceUrl": "https://voiceofsandiego.org/2026/10/07/how-san-diego-tenants-went-on-strike-over-their-utility-bills-and-won/"
+    },
+    {
+      "title": "Oct 14 — Sunrun and Tesla home batteries set 745 MW residential dispatch record in California",
+      "tag": "both",
+      "sourceLabel": "Sunrun (press release)",
+      "sourceUrl": "https://investors.sunrun.com/news-events/press-releases/detail/384/sunrun-leads-record-grid-dispatch-delivering-enough-energy"
+    },
     {
       "title": "Oct 14 — Base Power signs first non-Texas utility deal: 50 MW of whole-home backup batteries with Central Georgia EMC, dispatchable by the co-op ($95 one-time fee)",
       "tag": "harmony",
@@ -408,7 +415,9 @@ const REPORT = {
       "tag": "harmony",
       "sourceLabel": "DT Next",
       "sourceUrl": "https://www.dtnext.in/news/tamilnadu/tnpdcl-plans-smart-meter-app-to-track-usage-pay-electricity-bills-lodge-complaints"
-    },
+    }
+  ],
+  "stories": [
     {
       "title": "Oct 12 — Ollama v0.40.4: “decision models” from the CLI (yes/no, classify, rubric scoring), multimodal embeddings via llama-server, MLX runner fixes",
       "tag": "harmony",
@@ -572,13 +581,26 @@ function storyRow(s) {
   }
 })();
 
+(function () {
+  const list = document.getElementById('energy-list');
+  const section = document.getElementById('energy-section');
+  if (!list) return;
+  const energy = (REPORT && Array.isArray(REPORT.energy)) ? REPORT.energy : [];
+  if (energy.length === 0) {
+    if (section) section.hidden = true;
+  } else {
+    list.innerHTML = energy.map(storyRow).join('');
+  }
+})();
+
 /* ── Footer count ──────────────────────────────────────────────────────── */
 (function () {
   const el = document.getElementById('footer-count');
   if (!el) return;
   const s = visibleSpotlights.length;
   const t = (REPORT && Array.isArray(REPORT.stories)) ? REPORT.stories.length : 0;
-  el.textContent = `${s} spotlight${s !== 1 ? 's' : ''} · ${t} stories`;
+  const en = (REPORT && Array.isArray(REPORT.energy)) ? REPORT.energy.length : 0;
+  el.textContent = `${s} spotlight${s !== 1 ? 's' : ''} · ${en ? en + ' energy · ' : ''}${t} stories`;
 })();
 </script>
 </body>
