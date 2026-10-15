@@ -85,8 +85,15 @@ def validate_report(report: Any, where: str) -> list[str]:
         _fail(errors, where, "REPORT.stories must be an array (or omitted)")
         stories = []
 
-    for i, s in enumerate(stories):
-        loc = f"{where} stories[{i}]"
+    energy = report.get("energy")
+    if energy is None:
+        energy = []
+    if not isinstance(energy, list):
+        _fail(errors, where, "REPORT.energy must be an array (or omitted)")
+        energy = []
+
+    for i, s in [(i, s) for i, s in enumerate(stories)] + [(-1 - i, s) for i, s in enumerate(energy)]:
+        loc = f"{where} stories[{i}]" if i >= 0 else f"{where} energy[{-1 - i}]"
         if not isinstance(s, dict):
             _fail(errors, loc, "not an object")
             continue
@@ -106,6 +113,8 @@ def validate_report(report: Any, where: str) -> list[str]:
         _fail(errors, where, f"too many spotlights ({len(spotlights)}); cap is 8")
     if len(stories) > 30:
         _fail(errors, where, f"too many stories ({len(stories)}); cap is 30")
+    if len(energy) > 15:
+        _fail(errors, where, f"too many energy items ({len(energy)}); cap is 15")
 
     return errors
 

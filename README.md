@@ -91,6 +91,7 @@ Every `html/**.html` report page must contain a `const REPORT = {…};` literal 
   - `sourceLabel`: non-empty string
   - Optional: `bonus: true` for the bonus card slot, `keywords[]`, `relevance` string
 - `stories`: array (may be empty). Each entry: `title`, `tag`, `sourceUrl`, `sourceLabel`.
+- `energy`: **optional** array (added 2026-10-14). Same shape as `stories` (`title`, `tag`, `sourceUrl`, `sourceLabel`). Rendered in a dedicated **Energy** section between Spotlights and More Stories using the `.story-item` markup; the section is hidden when the array is empty or absent. Use it for residential/rental energy, utility programs, demand response, smart meters and rebates (e.g. Mass Save). An item may also appear as a spotlight (e.g. to satisfy the Flux-spotlight rule). Validated by `validate_report.py`, indexed by `build_manifest.py` (`energy_count`), and checked by `render_check.cjs` (rendered count must equal array length).
 
 **Three independent guards run before any deploy reaches production:**
 

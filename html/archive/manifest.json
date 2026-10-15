@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15 01:55 UTC",
+  "generated_at": "2026-10-15 01:57 UTC",
   "count": 19,
   "entries": [
     {
@@ -9,16 +9,16 @@
       "summary": "16-unit Bankers Hill building moved from a $60 flat utility fee to ratio billing (RUBS) via a third-party biller; one tenant\u2019s bill hit $289.",
       "tags": [
         "groove",
-        "both",
         "enterprise",
         "bonus",
+        "both",
         "harmony"
       ],
       "sources": [
         "Voice of San Diego",
-        "Sunrun (press release)",
         "Glean Release Notes",
         "PRWeb (Somio AI)",
+        "Sunrun (press release)",
         "Energy Tech",
         "WWLP-22News",
         "DT Next",
@@ -30,8 +30,9 @@
         "DXC Newsroom",
         "Upwork"
       ],
-      "spotlight_count": 4,
-      "story_count": 11,
+      "spotlight_count": 3,
+      "story_count": 8,
+      "energy_count": 5,
       "keywords": [
         "Oct 7 \u2014 San Diego tenants strike over RUBS utility bills and win a $100 cap",
         "Voice of San Diego",
@@ -39,12 +40,6 @@
         "16-unit Bankers Hill building moved from a $60 flat utility fee to ratio billing (RUBS) via a third-party biller; one tenant\u2019s bill hit $289.",
         "Tenants used San Diego\u2019s Residential Utility Fee Ordinance to demand the building\u2019s actual bills, withheld payment, and negotiated a $100 cap (70/30 split).",
         "Why it matters for GrooveGrid: small landlords passing utility costs through formulas face pushback and disclosure rules. Transparent, bill-backed cost allocation is the gap. This is our read; the article doesn\u2019t say it.",
-        "Oct 14 \u2014 Sunrun and Tesla home batteries set 745 MW residential dispatch record in California",
-        "Sunrun (press release)",
-        "both",
-        "669 MW on Oct 5 and 745 MW on Oct 6, called under California\u2019s DSGS and ELRP demand-response programs during a heat wave.",
-        "Dispatches triggered when CAISO day-ahead prices exceeded $200/MWh; Sunrun has 120,000+ batteries enrolled.",
-        "Sunrun says the Google-funded PG&E distributed power plant (~21,000 devices) begins initial dispatch this month.",
         "Oct 13 \u2014 Glean release 562: Fabric IQ MCP template plus tighter agent permission controls",
         "Glean Release Notes",
         "enterprise",
@@ -57,6 +52,12 @@
         "Generates songs from text, lyrics or a reference track; \u201cMy Voice\u201d lets you sing with your own uploaded voice.",
         "Built-in stem splitter, vocal remover, audio-to-MIDI, BPM/key finder and lyric/karaoke video generator.",
         "Creator angle: one tool for worship-set lyric videos and stems, but test output quality before relying on it.",
+        "Oct 7 \u2014 San Diego tenants strike over RUBS utility bills and win a $100 cap",
+        "Voice of San Diego",
+        "groove",
+        "Oct 14 \u2014 Sunrun and Tesla home batteries set 745 MW residential dispatch record in California",
+        "Sunrun (press release)",
+        "both",
         "Oct 14 \u2014 Base Power signs first non-Texas utility deal: 50 MW of whole-home backup batteries with Central Georgia EMC, dispatchable by the co-op ($95 one-time fee)",
         "Energy Tech",
         "harmony",
@@ -101,6 +102,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "Matter + OpenADR liaison: standards groups align to connect smart-home devices to utility demand-response via an energy gateway",
         "Connectivity Standards Alliance",
@@ -169,6 +171,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 7,
+      "energy_count": 0,
       "keywords": [
         "Matter + OpenADR: standard path from smart home devices to utility demand response (OpenADR 3 via an energy gateway)",
         "The Verge",
@@ -237,6 +240,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 5,
+      "energy_count": 0,
       "keywords": [
         "ServiceNow expands AI Control Tower into an end-to-end governance layer for agents and AI workflows",
         "ServiceNow Newsroom",
@@ -306,6 +310,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "ServiceNow expands AI Control Tower into an end-to-end governance layer for agents and AI workflows",
         "ServiceNow Newsroom",
@@ -375,6 +380,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "New Jersey BPU opens a Virtual Power Plant (VPP) RFI tied to distributed storage incentives",
         "New Jersey Board of Public Utilities (PDF)",
@@ -442,6 +448,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "Microsoft Entra ID Governance adds agent identity lifecycle: sponsors + access packages (Preview)",
         "Microsoft Learn",
@@ -509,6 +516,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "Microsoft Agent 365 ships Entra ID Governance for agents (access packages + sponsor lifecycle)",
         "Microsoft Tech Community",
@@ -577,6 +585,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 5,
+      "energy_count": 0,
       "keywords": [
         "OpenADR + smart meters: DLMS UA and OpenADR Alliance align on grid-edge interoperability",
         "Morningstar (Accesswire)",
@@ -645,6 +654,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "Grid-edge AI goes from pilot to tickets: Sense Waveform AI flags transformer-level faults",
         "Turns distribution analytics into actionable tickets \u2014 a concrete pattern for scaling AI ops in utility environments.",
@@ -714,6 +724,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 7,
+      "energy_count": 0,
       "keywords": [
         "Google Cloud Next '26: Gemini Enterprise Agent Platform supersedes Vertex AI as the agentic control plane",
         "Google Cloud Blog",
@@ -784,6 +795,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 7,
+      "energy_count": 0,
       "keywords": [
         "Okta launches a blueprint for securing AI agents as first-class identities",
         "Okta",
@@ -853,6 +865,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "Google Cloud launches Gemini Enterprise Agent Platform",
         "Google Cloud Blog",
@@ -922,6 +935,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "Ping Identity makes 'Identity for AI' generally available for runtime agent IAM",
         "Ping Identity press release",
@@ -987,6 +1001,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "Voltus + Octopus partner on 'bring-your-own-capacity' VPPs \u2014 a template for turning distributed devices into a data-center-era capacity product",
         "Voltus (historically C&I demand response) announced a partnership with Octopus Energy U.S. to source aggregations of residential devices in markets like PJM, MISO, New York, and California \u2014 extending Voltus\u2019 VPP playbook into 'bring-your-own-capacity' offerings aimed at fast, modular capacity in constrained regions.",
@@ -1053,6 +1068,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "VPP scale hits 37.5 GW in North America \u2014 and policy is starting to treat demand flexibility as capacity",
         "Wood Mackenzie estimates North American virtual power plant capacity reached 37.5 GW in 2025 (up 13.7% YoY), while PJM raised demand-side resource ELCC to 92% for the 2027\u201328 capacity auction \u2014 a quiet signal that flexibility is being priced like generation. The trendline: utilities and grid operators want bigger, more dispatchable portfolios (not one-off pilots), which is pushing aggregators toward better forecasting, verification, and tighter wholesale-local coordination.",
@@ -1123,6 +1139,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 7,
+      "energy_count": 0,
       "keywords": [
         "Minnesota PUC approves Xcel's 200 MW utility-owned VPP expansion \u2014 community-sited BESS phase 2 deploys through 2028",
         "The Minnesota Public Utilities Commission approved Phase 2 of Xcel Energy's Capacity*Connect VPP on April 10, clearing the utility to deploy up to 200 MW of 1\u20133 MW distributed battery systems 'sited closer to where people live and work' by 2028. The project stacks on Xcel's 600 MW Sherco Energy Hub and the 30 GWh iron-air Form Energy deployment for Google's Pine Island data center, positioning utility-owned VPPs as a mainstream grid resource rather than a pilot.",
@@ -1192,6 +1209,7 @@
       ],
       "spotlight_count": 4,
       "story_count": 6,
+      "energy_count": 0,
       "keywords": [
         "DLMS UA and OpenADR Alliance sign global liaison to bridge smart-meter data and grid-edge flexibility signalling",
         "The two standards bodies announced a liaison agreement to map COSEM (smart-meter data exchange) to OpenADR (DR/DER signalling), coordinate certifications, and explore DLMS/COSEM transport over OpenADR. The practical outcome for vendors: one less bespoke integration layer between meters, HEMS, and flexibility services.",
@@ -1257,6 +1275,7 @@
       ],
       "spotlight_count": 2,
       "story_count": 5,
+      "energy_count": 0,
       "keywords": [
         "AI-Based HVAC Optimization Delivers 20\u201330% Savings with Sub-2-Year Payback",
         "New commercial real estate case studies confirm AI-driven HVAC control cuts energy use by 20\u201330% in mixed-use buildings, with payback periods under 24 months. Predictive scheduling and occupancy-sensing are the primary levers \u2014 a direct match for GrooveGrid's positioning in small multi-tenant properties.",
