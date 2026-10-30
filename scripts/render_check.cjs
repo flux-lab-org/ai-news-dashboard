@@ -2,35 +2,79 @@
 /**
  * Headless render check.
  *
- * Loads the given URL(s) in a real browser and asserts:
+ * Loads the given URL(s) in a real browser (desktop + mobile viewports) and
+ * asserts:
  *   1. No uncaught JavaScript errors.
  *   2. No console.error messages.
  *   3. #spotlight-grid contains at least one .card.
  *   4. #story-list either has at least one .story-item OR shows the explicit
  *      "No additional stories today." empty-state message (a story-less day
  *      should be rare but is allowed).
+ *   5. REPORT.energy / REPORT.compliance counts match what actually rendered.
+ *   6. Page body is not blank on either viewport.
+ *
+ * If RENDER_CHECK_SCREENSHOT_DIR is set, a full-page PNG is saved per
+ * (url, viewport) pair — including on failure, best-effort, so CI can upload
+ * whatever was captured even when the check step itself fails.
  *
  * Usage:
  *   node scripts/render_check.cjs <url1> [url2 ...]
  *
  * Exits non-zero on any failure and prints all violations.
  */
+const fs = require('fs');
+const path = require('path');
 const { chromium } = require('playwright');
 
-async function checkOne(url) {
-  const browser = await chromium.launch();
-  const ctx = await browser.newContext();
+const SCREENSHOT_DIR = process.env.RENDER_CHECK_SCREENSHOT_DIR || '';
+
+const VIEWPORTS = [
+  { name: 'desktop', width: 1280, height: 800 },
+  { name: 'mobile', width: 375, height: 812 },
+];
+
+function slugFor(url) {
+  const u = new URL(url);
+  const slug = `${u.hostname}${u.pathname}`.replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return slug || 'root';
+}
+
+async function captureScreenshot(page, url, viewportName, suffix = '') {
+  if (!SCREENSHOT_DIR) return null;
+  try {
+    fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
+    const file = path.join(SCREENSHOT_DIR, `${slugFor(url)}.${viewportName}${suffix}.png`);
+    await page.screenshot({ path: file, fullPage: true });
+    return file;
+  } catch (e) {
+    console.error(`  screenshot capture failed for ${url} (${viewportName}): ${e.message}`);
+    return null;
+  }
+}
+
+async function checkViewport(browser, url, viewport) {
+  const ctx = await browser.newContext({
+    viewport: { width: viewport.width, height: viewport.height },
+  });
   const page = await ctx.newPage();
   const errors = [];
+  const screenshots = [];
   page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(`console.error: ${m.text()}`); });
 
+  let counts = null;
   try {
     const resp = await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
     if (!resp || !resp.ok()) {
       errors.push(`HTTP ${resp ? resp.status() : 'no-response'} on ${url}`);
     }
-    const counts = await page.evaluate(() => {
+
+    // Capture before running assertions so a failed assertion still leaves
+    // visual evidence of what actually rendered.
+    const shot = await captureScreenshot(page, url, viewport.name);
+    if (shot) screenshots.push(shot);
+
+    counts = await page.evaluate(() => {
       const grid = document.getElementById('spotlight-grid');
       const list = document.getElementById('story-list');
       return {
@@ -47,26 +91,52 @@ async function checkOne(url) {
       };
     });
 
-    if (counts.spotlights < 1) {
-      errors.push(`spotlight-grid empty: 0 cards rendered`);
-    }
-    if (counts.stories < 1 && !counts.emptyStory) {
-      errors.push(`story-list empty without explicit empty-state message`);
-    }
-    if (counts.energy !== counts.energyExpected) {
-      errors.push(`energy-list rendered ${counts.energy} items, REPORT.energy has ${counts.energyExpected}`);
-    }
-    if (counts.compliance !== counts.complianceExpected) {
-      errors.push(`compliance-list rendered ${counts.compliance} items, REPORT.compliance has ${counts.complianceExpected}`);
-    }
     if (counts.bodyLength < 200) {
       errors.push(`page body too short (${counts.bodyLength} chars) — likely blank`);
     }
 
-    return { url, counts, errors };
+    // DOM-structure assertions (spotlight/story/energy/compliance counts) are
+    // viewport-independent on this static, server-rendered site, so only run
+    // them once, on the desktop pass, to avoid duplicate/flaky failures.
+    if (viewport.name === 'desktop') {
+      if (counts.spotlights < 1) {
+        errors.push(`spotlight-grid empty: 0 cards rendered`);
+      }
+      if (counts.stories < 1 && !counts.emptyStory) {
+        errors.push(`story-list empty without explicit empty-state message`);
+      }
+      if (counts.energy !== counts.energyExpected) {
+        errors.push(`energy-list rendered ${counts.energy} items, REPORT.energy has ${counts.energyExpected}`);
+      }
+      if (counts.compliance !== counts.complianceExpected) {
+        errors.push(`compliance-list rendered ${counts.compliance} items, REPORT.compliance has ${counts.complianceExpected}`);
+      }
+    }
+  } catch (e) {
+    errors.push(`${viewport.name} render failed: ${e.message}`);
+    // Best-effort screenshot of whatever state the page reached.
+    const shot = await captureScreenshot(page, url, viewport.name, '-error');
+    if (shot) screenshots.push(shot);
   } finally {
-    await browser.close();
+    await ctx.close();
   }
+
+  return { errors, screenshots, counts };
+}
+
+async function checkOne(browser, url) {
+  const errors = [];
+  const screenshots = [];
+  let desktopCounts = null;
+
+  for (const viewport of VIEWPORTS) {
+    const result = await checkViewport(browser, url, viewport);
+    errors.push(...result.errors.map((e) => `[${viewport.name}] ${e}`));
+    screenshots.push(...result.screenshots);
+    if (viewport.name === 'desktop') desktopCounts = result.counts;
+  }
+
+  return { url, counts: desktopCounts, errors, screenshots };
 }
 
 (async () => {
@@ -76,16 +146,28 @@ async function checkOne(url) {
     process.exit(2);
   }
 
+  const browser = await chromium.launch();
   let failed = 0;
-  for (const u of urls) {
-    const r = await checkOne(u);
-    if (r.errors.length === 0) {
-      console.log(`  ok  ${u}  (${r.counts.spotlights} spotlights, ${r.counts.energy} energy, ${r.counts.compliance} compliance, ${r.counts.stories} stories)`);
-    } else {
-      failed++;
-      console.error(`  FAIL  ${u}`);
-      for (const e of r.errors) console.error(`    - ${e}`);
+  const allScreenshots = [];
+  try {
+    for (const u of urls) {
+      const r = await checkOne(browser, u);
+      allScreenshots.push(...r.screenshots);
+      if (r.errors.length === 0) {
+        const c = r.counts || {};
+        console.log(`  ok  ${u}  (${c.spotlights ?? '?'} spotlights, ${c.energy ?? '?'} energy, ${c.compliance ?? '?'} compliance, ${c.stories ?? '?'} stories)`);
+      } else {
+        failed++;
+        console.error(`  FAIL  ${u}`);
+        for (const e of r.errors) console.error(`    - ${e}`);
+      }
     }
+  } finally {
+    await browser.close();
+  }
+
+  if (SCREENSHOT_DIR) {
+    console.log(`\nSaved ${allScreenshots.length} screenshot(s) to ${SCREENSHOT_DIR}`);
   }
 
   if (failed > 0) {

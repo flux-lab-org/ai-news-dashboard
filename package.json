@@ -1,0 +1,8 @@
+{
+  "name": "ai-news-dashboard-verification",
+  "private": true,
+  "description": "Pinned dev dependencies for CI render verification (html-validate, Playwright). No build step for the dashboard itself.",
+  "devDependencies": {
+    "playwright": "1.48.2"
+  }
+}

@@ -54,7 +54,7 @@ Ranking when >4 candidates: Flux impact → Enterprise impact → Researcher nov
 ---
 
 ### Completely Absent
-- package.json / tsconfig.json — no Node.js/TypeScript setup
+- tsconfig.json — no TypeScript setup. (A root `package.json`/`package-lock.json` exist as of FLU-1545, but only to pin CI's Playwright verification dependency — there is still no app build step, framework, or bundler.)
 - pyproject.toml / requirements.txt — no Python package dependencies
 - Makefile / Procfile — no task runners or process managers
 - docker-compose.yml / Dockerfile — no containerization yet
