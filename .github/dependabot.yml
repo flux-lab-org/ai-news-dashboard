@@ -1,0 +1,48 @@
+# Dependabot version-updates for ai-news-dashboard (FLU-1792).
+#
+# Why this file exists: 63 of 64 repos in this org had no dependabot.yml, so
+# Dependabot only ever filed *security-alert* PRs. Those accumulated unbounded
+# and ungrouped into a 76-PR backlog with no regular maintenance cadence.
+#
+# Two deliberate choices, both from measured failures on that backlog:
+#
+# 1. minor/patch and major are grouped SEPARATELY, never together. A single
+#    group of ["*"] bundles a major into an innocuous-looking title (measured:
+#    harmony-grid-web#20 "bump postcss and next" was really next 15->16, and
+#    flux-kanban#34 "the python-deps group" carried cryptography 49->50). The
+#    "-minor-patch" group is what the night batch may approve; the "-major"
+#    group names itself as a major so it routes to Ron's card instead.
+# 2. Majors are still grouped among THEMSELVES rather than left individual,
+#    because paired pins otherwise produce unsatisfiable single-dep PRs
+#    (flux-kanban was stuck from 2026-07-14 on pytest 9 alone against
+#    pytest-asyncio's <9 pin).
+#
+# open-pull-requests-limit is set explicitly: the default of 5 per ecosystem is
+# what let the backlog grow unbounded.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 3
+    groups:
+      npm-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      npm-major:
+        patterns: ["*"]
+        update-types: ["major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 2
+    groups:
+      actions-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      actions-major:
+        patterns: ["*"]
+        update-types: ["major"]
