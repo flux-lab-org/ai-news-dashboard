@@ -20,7 +20,69 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  # Pull requests can contain code from an untrusted fork. Keep that path on
+  # GitHub-hosted infrastructure; self-hosted runners are reserved for refs
+  # already in this repository and manual runs.
+  validate-pr:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: HTML markup validation
+        run: npx --yes html-validate@8 "html/**/*.html"
+
+      - name: REPORT schema validation
+        run: python scripts/validate_report.py
+
+      - name: Verify committed archive manifest
+        run: python scripts/validate_manifest.py
+
+      - name: Run focused validation regression tests
+        run: python scripts/test_validation.py
+
+      - name: Install Playwright
+        run: |
+          npm init -y > /dev/null
+          npm install --no-audit --no-fund playwright@1.48
+          npx playwright install --with-deps chromium
+
+      - name: Serve html/ on a local port
+        run: |
+          cd html
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/http.log 2>&1 &
+          for i in $(seq 1 20); do
+            if curl -sf http://127.0.0.1:8765/index.html > /dev/null; then
+              echo "ready after ${i} attempts"; exit 0
+            fi
+            sleep 0.5
+          done
+          echo "server failed to start"; cat /tmp/http.log; exit 1
+
+      - name: Headless render check (today + every archive day)
+        run: |
+          set -e
+          urls=("http://127.0.0.1:8765/index.html")
+          for f in html/archive/2026-*.html; do
+            name=$(basename "$f")
+            urls+=("http://127.0.0.1:8765/archive/${name}")
+          done
+          node scripts/render_check.cjs "${urls[@]}"
+
+  # Trusted repository refs still exercise the real self-hosted lane. This
+  # job is never selected for pull_request events.
+  validate-self-hosted:
+    if: github.event_name != 'pull_request'
     runs-on: [self-hosted, night-shift]
     steps:
       - uses: actions/checkout@v4
