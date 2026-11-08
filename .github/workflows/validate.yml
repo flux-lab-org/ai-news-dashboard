@@ -16,9 +16,12 @@ on:
       - '.htmlvalidate.json'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, night-shift]
     steps:
       - uses: actions/checkout@v4
 
@@ -38,11 +41,11 @@ jobs:
       - name: REPORT schema validation
         run: python scripts/validate_report.py
 
-      - name: Build archive manifest (dry run)
-        run: python scripts/build_manifest.py
+      - name: Verify committed archive manifest
+        run: python scripts/validate_manifest.py
 
-      - name: Ensure manifest is valid JSON
-        run: python -c "import json,sys; json.load(open('html/archive/manifest.json'))"
+      - name: Run focused validation regression tests
+        run: python scripts/test_validation.py
 
       - name: Install Playwright
         run: |
