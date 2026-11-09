@@ -192,10 +192,9 @@ def summarize_entry(date: str, report: dict) -> dict:
     }
 
 
-def main() -> int:
+def build_manifest() -> dict:
     if not ARCHIVE_DIR.is_dir():
-        print(f"Archive dir missing: {ARCHIVE_DIR}", file=sys.stderr)
-        return 1
+        raise FileNotFoundError(f"Archive dir missing: {ARCHIVE_DIR}")
 
     entries = []
     files = sorted(ARCHIVE_DIR.glob("*.html"))
@@ -232,14 +231,26 @@ def main() -> int:
     # Newest first
     entries.sort(key=lambda e: e["date"], reverse=True)
 
-    manifest = {
+    return {
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "count": len(entries),
         "entries": entries,
     }
 
+
+def write_manifest(manifest: dict) -> None:
     OUT.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {OUT.relative_to(ROOT)} with {len(entries)} entries.")
+
+
+def main() -> int:
+    try:
+        manifest = build_manifest()
+    except FileNotFoundError as e:
+        print(e, file=sys.stderr)
+        return 1
+
+    write_manifest(manifest)
+    print(f"Wrote {OUT.relative_to(ROOT)} with {manifest['count']} entries.")
     return 0
 
 

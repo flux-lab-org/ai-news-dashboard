@@ -137,10 +137,9 @@ def validate_report(report: Any, where: str) -> list[str]:
     if len(compliance) > 20:
         _fail(errors, where, f"too many compliance items ({len(compliance)}); cap is 20")
 
-    # Counts: must have at least one spotlight (we already checked) and not exceed 8 total
-    # to catch runaway generators.  README cap is 4 spotlights; we leave headroom for stories.
-    if len(spotlights) > 8:
-        _fail(errors, where, f"too many spotlights ({len(spotlights)}); cap is 8")
+    # README.md is authoritative: a report may expand to four spotlights, never more.
+    if len(spotlights) > 4:
+        _fail(errors, where, f"too many spotlights ({len(spotlights)}); cap is 4")
     if len(stories) > 30:
         _fail(errors, where, f"too many stories ({len(stories)}); cap is 30")
     if len(energy) > 15:
