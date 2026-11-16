@@ -50,8 +50,7 @@ jobs:
 
       - name: Install Playwright
         run: |
-          npm init -y > /dev/null
-          npm install --no-audit --no-fund playwright@1.48
+          npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
 
       - name: Serve html/ on a local port
