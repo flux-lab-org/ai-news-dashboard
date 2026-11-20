@@ -225,8 +225,8 @@ A B+ edition deployed beats an A+ edition stuck waiting for "more news."
 ## Environment & Auth
 
 - **Local workspace:** `/home/user/workspace/ai-news-dashboard`
-- **GitHub remote:** `https://github.com/mojosailor/ai-news-dashboard`
-- **Git identity in workspace:** `user.email=rlovell@prevwind.com`, `user.name=mojosailor`
+- **GitHub remote:** `https://github.com/flux-lab-org/ai-news-dashboard`
+- **Git identity in workspace:** use the org bot identity configured in your environment (e.g. `claude-flux-lab[bot]`), not a personal `mojosailor` identity
 - **AWS account:** `992382519644`
 - **S3 bucket:** `ai-news-dashboard-992382519644`
 - **Deploy IAM role:** `arn:aws:iam::992382519644:role/ai-news-dashboard-deploy` (used by `deploy.yml` via OIDC)
